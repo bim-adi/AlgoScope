@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Traversal Visualizer</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>DFS & BFS Visualizer 🧠</h1>
+
+    <div class="controls">
+        <label for="start-node">Start Node:</label>
+        <select id="start-node">
+            <% Object.keys(graph).forEach(node=> { %>
+                <option value="<%= node %>">
+                    <%= node %>
+                </option>
+                <% }) %>
+        </select>
+        <button id="bfs-btn">Run BFS</button>
+        <button id="dfs-btn">Run DFS</button>
+        <button id="reset-btn">Reset</button>
+    </div>
+
+    <div id="graph-container">
+        <div id="mynetwork"></div>
+        <div id="status-panel">
+            <h3>Log</h3>
+            <div id="log-message">Ready to start...</div>
+            <h3>Queue / Stack</h3>
+            <div id="queue-stack-display">[]</div>
+        </div>
+    </div>
+
+    <script>
+        const graphDataFromServer = <%- JSON.stringify(graph) %>;
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
