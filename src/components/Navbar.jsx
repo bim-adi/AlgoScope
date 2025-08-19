@@ -14,7 +14,7 @@ export const Navbar = () => {
         <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
             <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    <a href="#" className="text-xl font-semibold tracking-tight">AlgoWeb</a>
+                    <a href="#" className="text-xl font-semibold tracking-tight">AlgoScope</a>
 
                     <div className="hidden md:flex items-center gap-6">
                         <ul className="flex items-center gap-1">
