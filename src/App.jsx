@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <Canvas algorithm={algorithm} />
         <Menu setAlgorithm={setAlgorithm} />
       </div>
