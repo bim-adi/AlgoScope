@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Navbar } from "./Components/Navbar"
-import { Canvas } from "./Components/Canvas"
-import { Menu } from "./Components/Menu"
-import MultiCodeViewer from "./Components/CodeView"
+import { Navbar } from "./components/Navbar"
+import { Canvas } from "./components/Canvas"
+import { Menu } from "./components/Menu"
+import MultiCodeViewer from "./components/MultiCodeViewer"
 
 function App() {
   const [algorithm, setAlgorithm] = useState(null)
