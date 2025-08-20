@@ -44,7 +44,7 @@ export const Menu = ({ setAlgorithm }) => {
       </form>
       <button
         onClick={handleReset}
-        className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded transition duration-300'
+        className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300'
       >
         Reset
       </button>
