@@ -1,19 +1,17 @@
 import React from 'react'
 
-export const Menu = ({ setAlgorithm }) => {
+export const Menu2 = ({ setNode }) => {
   const handleChange = e => {
-    setAlgorithm(e.target.value)
+    setNode(e.target.value)
   }
 
   const handleReset = () => {
-    setAlgorithm(null)
+    setNode(null)
   }
 
   return (
     <div className='space-y-3'>
-      <h3 className='text-lg font-semibold text-slate-800'>
-        Algorithm Selection
-      </h3>
+      <h3 className='text-lg font-semibold text-slate-800'>Starting Node</h3>
       <form className='m-auto'>
         <div className='w-full max-w-sm min-w-[200px]'>
           <div className='relative'>
@@ -21,9 +19,12 @@ export const Menu = ({ setAlgorithm }) => {
               onChange={handleChange}
               className='w-full bg-transparent placeholder:text-slate-500 text-slate-800 text-sm border border-slate-600 rounded pl-3 pr-8 py-2 transition duration-300 focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer'
             >
-              <option value=''>Choose an Algorithm</option>
-              <option value='bfs'>Breadth-First Search (BFS)</option>
-              <option value='dfs'>Depth-First Search (DFS)</option>
+              <option value=''>Choose a Starting Node</option>
+              {Array.from({ length: 9 }, (_, i) => i + 1).map(element => (
+                <option key={element} value={element}>
+                  {element}
+                </option>
+              ))}
             </select>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -31,7 +32,7 @@ export const Menu = ({ setAlgorithm }) => {
               viewBox='0 0 24 24'
               strokeWidth='1.2'
               stroke='currentColor'
-              className='h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-900'
+              className='h-5 w-5 ml-1 absolute top-2.5 right-5 text-slate-700'
             >
               <path
                 strokeLinecap='round'
@@ -44,8 +45,7 @@ export const Menu = ({ setAlgorithm }) => {
       </form>
       <button
         onClick={handleReset}
-        className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded transition duration-300'
-      >
+        className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded transition duration-300'      >
         Reset
       </button>
     </div>
