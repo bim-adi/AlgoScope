@@ -125,7 +125,7 @@ export const Canvas = ({ algorithm }) => {
         <div
             id="cy"
             ref={containerRef}
-            className="w-[600px] md:w-full h-[600px] m-8 rounded-lg border border-stone-500 bg-stone-300"
+            className="h-[600px] m-8 rounded-lg border border-stone-500 bg-stone-300 md:w-auto lg:w-auto xl:w-auto 2xl:w-auto"
         />
     )
 }
