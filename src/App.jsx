@@ -12,7 +12,7 @@ function App () {
       <Navbar />
       <div className='flex flex-col md:flex-row'>
         <Canvas algorithm={algorithm} vertex={vertex} />
-        <div className='flex flex-col gap-4 p-4'>
+        <div className='flex flex-col gap-4 p-4 m-auto'>
           <Menu setAlgorithm={setAlgorithm} />
           <Menu2 setNode={setNode} />
         </div>
