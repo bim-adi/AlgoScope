@@ -5,11 +5,11 @@ const MultiCodeViewer = () => {
     const [code1, setCode1] = useState('// Code for File 1\nconsole.log("Hello from File 1!");');
     const [code2, setCode2] = useState('// Code for File 2\nfunction greet() { return "Hello from File 2!"; }');
 
-    const handleEditorChange1 = (value, event) => {
+    const handleEditorChange1 = (value) => {
         setCode1(value);
     };
 
-    const handleEditorChange2 = (value, event) => {
+    const handleEditorChange2 = (value) => {
         setCode2(value);
     };
 
