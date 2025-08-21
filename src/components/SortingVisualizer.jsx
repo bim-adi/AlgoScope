@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-export default function SortingVisualizer () {
+export default function SortingVisualizer() {
   const [array, setArray] = useState([50, 120, 70, 30, 200, 90, 160])
   const [isSorting, setIsSorting] = useState(false)
 
@@ -60,29 +60,30 @@ export default function SortingVisualizer () {
       </div>
 
       {/* Controls */}
-      <div className='mt-4 flex gap-4'>
-        <button
-          onClick={bubbleSort}
-          disabled={isSorting}
-          className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
-        >
-          Bubble Sort
-        </button>
-        <button
-          onClick={() =>
-            setArray(
-              Array.from(
-                { length: 10 },
-                () => Math.floor(Math.random() * 200) + 50
+      <div className='mt-4 gap-4 flex flex-col md:flex-row'>
+        <div className='flex'>
+          <button
+            onClick={bubbleSort}
+            disabled={isSorting}
+            className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
+          >
+            Bubble Sort
+          </button>
+          <button
+            onClick={() =>
+              setArray(
+                Array.from(
+                  { length: 10 },
+                  () => Math.floor(Math.random() * 200) + 50
+                )
               )
-            )
-          }
-          disabled={isSorting}
-          className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
-        >
-          Generate New Array
-        </button>
-        
+            }
+            disabled={isSorting}
+            className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
+          >
+            Generate New Array
+          </button>
+        </div>
         <div className='next p-4'>
           {array.map((item, idx) => (
             <span key={idx} className='array-ele rounded-lg'>
@@ -91,7 +92,6 @@ export default function SortingVisualizer () {
           ))}
         </div>
       </div>
-
       <style>{`
       .array-ele{
       border:2px solid black;
