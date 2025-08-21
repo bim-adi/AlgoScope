@@ -73,8 +73,8 @@ export default function SortingVisualizer() {
             onClick={() =>
               setArray(
                 Array.from(
-                  { length: 10 },
-                  () => Math.floor(Math.random() * 200) + 50
+                  { length: 8 },
+                  () => Math.floor(Math.random() * 100) + 50
                 )
               )
             }
