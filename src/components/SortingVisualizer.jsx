@@ -48,12 +48,12 @@ export default function SortingVisualizer () {
       {/* Bars */}
       <div
         id='container'
-        className='flex gap-2 items-end h-[300px] border p-4 rounded bg-amber-500'
+        className='flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2'
       >
         {array.map((val, idx) => (
           <div
             key={idx}
-            className='bar bg-green-600 transition-all duration-500'
+            className='bar transition-all duration-500 border-2 border-b-black'
             style={{ height: `${val}px`, width: '30px' }}
           ></div>
         ))}
@@ -64,7 +64,7 @@ export default function SortingVisualizer () {
         <button
           onClick={bubbleSort}
           disabled={isSorting}
-          className='px-4 py-2 text-white disabled:opacity-50 button'
+          className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
         >
           Bubble Sort
         </button>
@@ -78,14 +78,14 @@ export default function SortingVisualizer () {
             )
           }
           disabled={isSorting}
-          className='px-4 py-2 text-white disabled:opacity-50 button'
+          className='border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black  text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 disabled:opacity-50 button'
         >
           Generate New Array
         </button>
         
         <div className='next p-4'>
           {array.map((item, idx) => (
-            <span key={idx} className='array-ele'>
+            <span key={idx} className='array-ele rounded-lg'>
               {item}
             </span>
           ))}
@@ -94,29 +94,23 @@ export default function SortingVisualizer () {
 
       <style>{`
       .array-ele{
-      border:1px solid black;
+      border:2px solid black;
       padding:5px;
+      margin:2px;
       }
         #container{
-        border:2px solid red;
-        // transform: rotate(180deg);
-        transform: scaleY(-1);
+          background:#DDDEAB;
         }
         .bar {
-          background: green;
-          border:1px solid black;
+          background: #D92C54;
+          border:2px solid black;
         }
         .bar.active {
-          background: tomato !important;
+          background: #8ABB6C !important;
       }
           .array-ele.active {
-          background: tomato !important;
+          background: #8ABB6C !important;
       }
-          .button{
-          background: black;
-          border-radius: 20px;
-          margin:10px;
-          }
       `}</style>
     </div>
   )
