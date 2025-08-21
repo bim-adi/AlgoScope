@@ -74,7 +74,7 @@ export default function SortingVisualizer() {
               setArray(
                 Array.from(
                   { length: 8 },
-                  () => Math.floor(Math.random() * 100) + 50
+                  () => Math.floor(Math.random() * 200) + 50
                 )
               )
             }
@@ -86,7 +86,7 @@ export default function SortingVisualizer() {
         </div>
         <div className='next p-4'>
           {array.map((item, idx) => (
-            <span key={idx} className='array-ele rounded-lg'>
+            <span key={idx} className='array-ele rounded-lg transition-all duration-500'>
               {item}
             </span>
           ))}
