@@ -75,6 +75,7 @@ function App () {
       path: '/sort',
       element: (
         <>
+          <Navbar />
           <SortingVisualizer />
         </>
       )

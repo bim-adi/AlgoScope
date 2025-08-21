@@ -8,8 +8,8 @@ export const Navbar = () => {
   const links = [
     { name: 'Search', href: '/search' },
     { name: 'Shortest Path', href: '/spath' },
+    { name: 'Sort', href: '/sort' },
     { name: 'About', href: '/about' },
-    { name: 'Sort', href: '/sort' }
   ]
 
   return (

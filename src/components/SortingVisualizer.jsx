@@ -53,9 +53,9 @@ export default function SortingVisualizer() {
         {array.map((val, idx) => (
           <div
             key={idx}
-            className='bar transition-all duration-500 border-2 border-b-black'
+            className='bar rounded transition-all duration-500 border-2 border-b-black'
             style={{ height: `${val}px`, width: '30px' }}
-          ></div>
+          ><div className='bar-val'> {val}</div> </div>
         ))}
       </div>
 
@@ -93,11 +93,11 @@ export default function SortingVisualizer() {
         </div>
       </div>
       <style>{`
-      .array-ele{
-      border:2px solid black;
-      padding:5px;
-      margin:2px;
-      }
+        .array-ele {
+          border:2px solid black;
+          padding:5px;
+          margin:2px;
+        }
         #container{
           background:#DDDEAB;
         }
@@ -107,10 +107,17 @@ export default function SortingVisualizer() {
         }
         .bar.active {
           background: #8ABB6C !important;
-      }
-          .array-ele.active {
-          background: #8ABB6C !important;
-      }
+        }
+        .array-ele.active {
+            background: #8ABB6C !important;
+        }
+        .bar-val {
+          display: flex; 
+          justify-content: center;
+          color: #DDDEAB;
+          font-size: small;
+          font-weight: bolder;
+        }
       `}</style>
     </div>
   )

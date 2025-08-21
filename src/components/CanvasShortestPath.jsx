@@ -49,7 +49,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
             nodes: {
                 shape: 'dot',
                 size: 20,
-                color: '#C562AF',
+                color: '#000000',
                 font: { size: 14, color: '#3338A0' }
             },
             edges: { arrows: { to: true }, color: { inherit: 'from' } }
@@ -259,7 +259,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         <div
             id='cy-sp'
             ref={containerRef}
-            className='h-[600px] m-8 rounded-lg border border-stone-500 bg-stone-300 md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
+            className='h-[600px] m-8 rounded-lg border border-stone-500 bg-yellow-100 md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
         />
     )
 }
