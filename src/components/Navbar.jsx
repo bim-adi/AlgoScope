@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState('Home')
 
     const links = [
-        { name: 'Home', href: '#' },
-        { name: 'About', href: '#about' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Search', href: '/search' },
+        { name: 'Shortest Path', href: '/spath' },
+        { name: 'About', href: '/about' },
     ]
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
             <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    <a href="#" className="text-xl font-semibold tracking-tight">AlgoScope</a>
+                    <Link to="/" className="text-xl font-semibold tracking-tight">AlgoScope</Link>
 
                     <div className="hidden md:flex items-center gap-6">
                         <ul className="flex items-center gap-1">
                             {links.map((link) => (
                                 <li key={link.name}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         onClick={() => setActive(link.name)}
                                         className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${active === link.name
                                                 ? 'bg-black text-white'
@@ -29,16 +30,16 @@ export const Navbar = () => {
                                             }`}
                                     >
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
-                        <a
-                            href="#get-started"
+                        <Link
+                            to="#get-started"
                             className="inline-flex items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                         >
                             Get Started
-                        </a>
+                        </Link>
                     </div>
 
                     <button
@@ -63,7 +64,7 @@ export const Navbar = () => {
                     <ul className="space-y-1">
                         {links.map((link) => (
                             <li key={link.name}>
-                                <a
+                                <Link
                                     href={link.href}
                                     onClick={() => {
                                         setActive(link.name)
@@ -75,16 +76,16 @@ export const Navbar = () => {
                                         }`}
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
-                    <a
+                    <Link
                         href="#get-started"
                         className="mt-3 block text-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
                     >
                         Get Started
-                    </a>
+                    </Link>
                 </div>
             </div>
         </header>

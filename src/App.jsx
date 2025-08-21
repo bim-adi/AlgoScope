@@ -1,22 +1,47 @@
 import React, { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { CanvasSearching } from './components/CanvasSearching'
+import { MenuSetAlgoSearch } from './components/MenuSetAlgoSearch'
+import { MenuSelectNodeSearch } from './components/MenuSelectNodeSearch'
 import { Navbar } from './components/Navbar'
-import { Canvas } from './components/Canvas'
-import { Menu } from './components/Menu'
-import { Menu2 } from './components/Menu2'
+import { Home } from './components/Home'
 
-function App () {
+function App() {
   const [algorithm, setAlgorithm] = useState(null)
   const [vertex, setNode] = useState(null)
+
+  const route = createBrowserRouter([
+    {
+      path: "/",
+      element: <><Navbar /> <Home /></>
+    },
+    {
+      path: "/search",
+      element: <>
+        <Navbar />
+        <div className='flex flex-col md:flex-row'>
+          <CanvasSearching algorithm={algorithm} vertex={vertex} />
+          <div className='flex flex-col gap-4 p-4 m-auto'>
+            <MenuSetAlgoSearch setAlgorithm={setAlgorithm} />
+            <MenuSelectNodeSearch setNode={setNode} />
+          </div>
+        </div>
+      </>
+    },
+    {
+      path: "/spath",
+      element: <><Navbar /></>
+    },
+    {
+      path: "/about",
+      element: <><Navbar /></>
+    },
+
+  ]);
+  
   return (
     <>
-      <Navbar />
-      <div className='flex flex-col md:flex-row'>
-        <Canvas algorithm={algorithm} vertex={vertex} />
-        <div className='flex flex-col gap-4 p-4 m-auto'>
-          <Menu setAlgorithm={setAlgorithm} />
-          <Menu2 setNode={setNode} />
-        </div>
-      </div>
+      <RouterProvider router={route} />
     </>
   )
 }

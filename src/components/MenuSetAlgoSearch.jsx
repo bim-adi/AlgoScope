@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Menu = ({ setAlgorithm }) => {
+export const MenuSetAlgoSearch = ({ setAlgorithm }) => {
   const handleChange = e => {
     setAlgorithm(e.target.value)
   }

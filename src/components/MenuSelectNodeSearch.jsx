@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Menu2 = ({ setNode }) => {
+export const MenuSelectNodeSearch = ({ setNode }) => {
   const handleChange = e => {
     setNode(e.target.value)
   }
