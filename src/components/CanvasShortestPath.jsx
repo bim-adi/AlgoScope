@@ -45,14 +45,68 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         const data = { nodes, edges }
 
         const options = {
-            physics: { enabled: true },
+            physics: { 
+                enabled: true,
+                stabilization: {
+                    enabled: true,
+                    iterations: 100,
+                    updateInterval: 25
+                }
+            },
             nodes: {
                 shape: 'dot',
-                size: 20,
-                color: '#000000',
-                font: { size: 14, color: '#3338A0' }
+                size: 25,
+                color: { 
+                    background: '#D92C54',
+                    border: '#000000',
+                    highlight: { background: '#8ABB6C', border: '#000000' }
+                },
+                font: { 
+                    size: 16, 
+                    color: '#DDDEAB',
+                    face: 'Arial',
+                    bold: true
+                },
+                borderWidth: 3,
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.3)',
+                    size: 10,
+                    x: 5,
+                    y: 5
+                }
             },
-            edges: { arrows: { to: true }, color: { inherit: 'from' } }
+            edges: { 
+                arrows: { to: { enabled: true, scaleFactor: 0.8 } }, 
+                color: { 
+                    color: '#000000',
+                    highlight: '#8ABB6C',
+                    hover: '#8ABB6C'
+                },
+                width: 3,
+                smooth: {
+                    type: 'curvedCW',
+                    roundness: 0.2
+                },
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.3)',
+                    size: 10,
+                    x: 5,
+                    y: 5
+                },
+                font: {
+                    size: 14,
+                    color: '#000000',
+                    face: 'Arial',
+                    bold: true,
+                    align: 'middle'
+                }
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 200
+            }
         }
 
         const network = new window.vis.Network(containerRef.current, data, options)
@@ -69,10 +123,18 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
     const resetStyles = () => {
         if (!nodesRef.current || !edgesRef.current) return
         nodesRef.current.get().forEach(n => {
-            nodesRef.current.update({ id: n.id, color: { background: '#C562AF' } })
+            nodesRef.current.update({ 
+                id: n.id, 
+                color: { background: '#D92C54', border: '#000000' },
+                size: 25
+            })
         })
         edgesRef.current.get().forEach(e => {
-            edgesRef.current.update({ id: e.id, color: undefined })
+            edgesRef.current.update({ 
+                id: e.id, 
+                color: { color: '#000000' },
+                width: 3
+            })
         })
     }
 
@@ -81,7 +143,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         resetStyles()
     }, [algorithm, source, target])
 
-    // Run and animate shortest path
+    // Run and animate shortest path with enhanced visual effects
     useEffect(() => {
         if (!algorithm || !source || !target) return
         if (!nodesRef.current || !edgesRef.current) return
@@ -108,13 +170,34 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         const timers = []
         const visitLaterNode = (id, delay) => {
             const t = setTimeout(() => {
-                nodes.update({ id, color: { background: '#ff4136' } })
+                // Animate node with size and color change
+                nodes.update({ 
+                    id, 
+                    color: { background: '#ff4136', border: '#000000' },
+                    size: 35
+                })
+                
+                // Add pulsing effect
+                setTimeout(() => {
+                    nodes.update({ id, size: 30 })
+                }, 300)
             }, delay)
             timers.push(t)
         }
+        
         const visitLaterEdge = (edgeId, delay) => {
             const t = setTimeout(() => {
-                edges.update({ id: edgeId, color: { color: '#ff4136' } })
+                // Animate edge with color and width change
+                edges.update({ 
+                    id: edgeId, 
+                    color: { color: '#8ABB6C' },
+                    width: 6
+                })
+                
+                // Add pulsing effect
+                setTimeout(() => {
+                    edges.update({ id: edgeId, width: 5 })
+                }, 200)
             }, delay)
             timers.push(t)
         }
@@ -138,14 +221,34 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
             pathEdges.reverse()
 
             let delay = 0
-            pathNodes.forEach((n) => {
+            // Animate path nodes with staggered timing
+            pathNodes.forEach((n, index) => {
                 visitLaterNode(n, delay)
-                delay += 700
+                delay += 800
+                
+                // Add connection line animation
+                if (index < pathEdges.length) {
+                    visitLaterEdge(pathEdges[index], delay - 200)
+                }
             })
-            pathEdges.forEach((eId) => {
-                visitLaterEdge(eId, delay)
-                delay += 200
-            })
+            
+            // Final completion animation
+            setTimeout(() => {
+                pathNodes.forEach(n => {
+                    nodes.update({ 
+                        id: n, 
+                        color: { background: '#8ABB6C', border: '#000000' },
+                        size: 28
+                    })
+                })
+                pathEdges.forEach(eId => {
+                    edges.update({ 
+                        id: eId, 
+                        color: { color: '#8ABB6C' },
+                        width: 5
+                    })
+                })
+            }, delay + 500)
         }
 
         const runDijkstra = () => {
@@ -259,7 +362,10 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         <div
             id='cy-sp'
             ref={containerRef}
-            className='h-[600px] m-8 rounded-lg border border-stone-500 bg-yellow-100 md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
+            className='h-[600px] m-8 rounded-lg border-2 border-stone-500 shadow-lg md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
+            style={{
+                background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)'
+            }}
         />
     )
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-export const CanvasSearching= ({ algorithm, vertex }) => {
-    // const [vert, setNode] = useState(null)
-
+export const CanvasSearching = ({ algorithm, vertex }) => {
     const containerRef = useRef(null)
     const networkRef = useRef(null)
     const nodesRef = useRef(null)
@@ -84,14 +82,61 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
         const data = { nodes, edges }
 
         const options = {
-            physics: { enabled: true },
+            physics: { 
+                enabled: true,
+                stabilization: {
+                    enabled: true,
+                    iterations: 100,
+                    updateInterval: 25
+                }
+            },
             nodes: {
                 shape: 'dot',
-                size: 20,
-                color: '#000000',
-                font: { size: 14, color: '#3338A0' }
+                size: 25,
+                color: { 
+                    background: '#D92C54',
+                    border: '#000000',
+                    highlight: { background: '#8ABB6C', border: '#000000' }
+                },
+                font: { 
+                    size: 16, 
+                    color: '#DDDEAB',
+                    face: 'Arial',
+                    bold: true
+                },
+                borderWidth: 3,
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.3)',
+                    size: 10,
+                    x: 5,
+                    y: 5
+                }
             },
-            edges: { arrows: { to: true }, color: { inherit: 'from' } }
+            edges: { 
+                arrows: { to: { enabled: true, scaleFactor: 0.8 } }, 
+                color: { 
+                    color: '#000000',
+                    highlight: '#8ABB6C',
+                    hover: '#8ABB6C'
+                },
+                width: 3,
+                smooth: {
+                    type: 'curvedCW',
+                    roundness: 0.2
+                },
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.3)',
+                    size: 10,
+                    x: 5,
+                    y: 5
+                }
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 200
+            }
         }
 
         const network = new window.vis.Network(containerRef.current, data, options)
@@ -105,11 +150,27 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
         }
     }, [])
 
-    // Reset nodes to default color
+    // Reset nodes to default color with smooth transition
     const resetNodes = () => {
         if (nodesRef.current) {
             nodesRef.current.get().forEach(n => {
-                nodesRef.current.update({ id: n.id, color: { background: '#C562AF' } })
+                nodesRef.current.update({ 
+                    id: n.id, 
+                    color: { 
+                        background: '#D92C54',
+                        border: '#000000'
+                    },
+                    size: 25
+                })
+            })
+        }
+        if (edgesRef.current) {
+            edgesRef.current.get().forEach(e => {
+                edgesRef.current.update({ 
+                    id: e.id, 
+                    color: { color: '#000000' },
+                    width: 3
+                })
             })
         }
     }
@@ -119,19 +180,21 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
         resetNodes()
     }, [algorithm, vertex])
 
-    // animate algorithm
+    // animate algorithm with enhanced visual effects
     useEffect(() => {
         if (!algorithm || !vertex || !nodesRef.current || !edgesRef.current) return
 
         const nodes = nodesRef.current
         const edges = edgesRef.current
 
-        // reset all nodes to gray before starting
-        nodes
-            .get()
-            .forEach(n =>
-                nodes.update({ id: n.id, color: { background: '#cccccc' } })
-            )
+        // reset all nodes to default color before starting
+        nodes.get().forEach(n =>
+            nodes.update({ 
+                id: n.id, 
+                color: { background: '#cccccc', border: '#000000' },
+                size: 25
+            })
+        )
 
         const adjacency = {}
         edges.get().forEach(e => {
@@ -142,20 +205,34 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
         const timers = []
         const visit = (id, delay) => {
             const t = setTimeout(() => {
-                nodes.update({ id, color: { background: '#ff4136' } })
+                // Animate node size and color
+                nodes.update({ 
+                    id, 
+                    color: { background: '#ff4136', border: '#000000' },
+                    size: 35
+                })
+                
+                // Add pulsing effect
+                setTimeout(() => {
+                    nodes.update({ id, size: 30 })
+                }, 200)
             }, delay)
             timers.push(t)
         }
 
-        const markCompleted = delay => {
+        const markCompleted = completionDelay => {
             const t = setTimeout(() => {
-                // Show completion by changing all visited nodes to green
+                // Show completion by changing all visited nodes to green with animation
                 nodes.get().forEach(n => {
                     if (n.color.background === '#ff4136') {
-                        nodes.update({ id: n.id, color: { background: '#2ecc40' } })
+                        nodes.update({ 
+                            id: n.id, 
+                            color: { background: '#8ABB6C', border: '#000000' },
+                            size: 28
+                        })
                     }
                 })
-            }, delay)
+            }, completionDelay)
             timers.push(t)
         }
 
@@ -167,13 +244,25 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
             while (queue.length) {
                 let node = queue.shift()
                 visit(node, delay)
-                delay += 1000
-                    ; (adjacency[node] || []).forEach(n => {
-                        if (!visited.has(n)) {
-                            visited.add(n)
-                            queue.push(n)
+                delay += 1200
+                ;(adjacency[node] || []).forEach(n => { // Animate edges to neighbors
+                    if (!visited.has(n)) {
+                        visited.add(n)
+                        queue.push(n)
+                        
+                        // Highlight edge
+                        const edge = edges.get().find(e => e.from === node && e.to === n)
+                        if (edge) {
+                            setTimeout(() => {
+                                edges.update({ 
+                                    id: edge.id, 
+                                    color: { color: '#8ABB6C' },
+                                    width: 5
+                                })
+                            }, delay - 200)
                         }
-                    })
+                    }
+                })
             }
 
             // Mark completion
@@ -188,8 +277,23 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
                 if (visited.has(node)) return
                 visited.add(node)
                 visit(node, delay)
-                delay += 1000
-                    ; (adjacency[node] || []).forEach(n => dfs(n))
+                delay += 1200
+                // Animate edges to neighbors
+                ;(adjacency[node] || []).forEach(n => {
+                    if (!visited.has(n)) {
+                        const edge = edges.get().find(e => e.from === node && e.to === n)
+                        if (edge) {
+                            setTimeout(() => {
+                                edges.update({ 
+                                    id: edge.id, 
+                                    color: { color: '#8ABB6C' },
+                                    width: 5
+                                })
+                            }, delay - 200)
+                        }
+                        dfs(n)
+                    }
+                })
             }
 
             dfs(parseInt(vertex))
@@ -207,7 +311,10 @@ export const CanvasSearching= ({ algorithm, vertex }) => {
         <div
             id='cy'
             ref={containerRef}
-            className='h-[600px] m-8 rounded-lg border border-stone-500 bg-yellow-100 md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
+            className='h-[600px] m-8 rounded-lg border-2 border-stone-500 bg-gradient-to-br from-yellow-50 to-yellow-100 shadow-lg md:w-auto lg:w-auto xl:w-auto 2xl:w-auto'
+            style={{
+                background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)'
+            }}
         />
     )
 }
