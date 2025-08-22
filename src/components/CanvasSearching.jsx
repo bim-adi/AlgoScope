@@ -100,7 +100,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
                 },
                 font: { 
                     size: 16, 
-                    color: '#DDDEAB',
+                    color: '#3E3F29',
                     face: 'Arial',
                     bold: true
                 },

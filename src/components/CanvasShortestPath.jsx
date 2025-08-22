@@ -63,7 +63,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
                 },
                 font: { 
                     size: 16, 
-                    color: '#DDDEAB',
+                    color: '#3E3F29',
                     face: 'Arial',
                     bold: true
                 },
