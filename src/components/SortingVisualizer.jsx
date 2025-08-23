@@ -35,6 +35,14 @@ export default function SortingVisualizer() {
     }
   }
 
+  // Utility: clear existing count arrays
+  const clearCountArrays = () => {
+    const dynamicContainer = document.getElementById('dynamic-containers')
+    if (dynamicContainer) {
+      dynamicContainer.innerHTML = ''
+    }
+  }
+
   // Bubble Sort Animation
   const bubbleSort = async () => {
     setIsSorting(true)
@@ -347,57 +355,128 @@ export default function SortingVisualizer() {
   // Counting Sort Animation
   const countingSort = async () => {
     setIsSorting(true)
+    clearCountArrays()
     let arr = [...array]
-
-    let max = Math.max(...arr)
-    let count = new Array(max + 1).fill(0)
-    let output = new Array(arr.length)
-
-    // Count occurrences
+    
+    // Create count array visualization
+    const max = Math.max(...arr)
+    const count = new Array(max + 1).fill(0)
+    
+    // Add count array visualization to DOM
+    const dynamicContainer = document.getElementById('dynamic-containers')
+    const countContainer = document.createElement('div')
+    countContainer.id = 'count-container'
+    countContainer.className = 'flex flex-col items-center'
+    
+    // Add title
+    const title = document.createElement('h3')
+    title.className = 'text-lg font-semibold text-slate-800 mb-2'
+    title.textContent = 'Count Array'
+    countContainer.appendChild(title)
+    
+    // Add bars container
+    const barsContainer = document.createElement('div')
+    barsContainer.className = 'flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2'
+    barsContainer.style.background = '#DDDEAB'
+    countContainer.appendChild(barsContainer)
+    
+    // Create count bars
+    for (let i = 0; i <= max; i++) {
+      const countBar = document.createElement('div')
+      countBar.className = 'count-bar rounded transition-all duration-500 border-2 border-b-black'
+      countBar.style.height = '0px'
+      countBar.style.width = '20px'
+      countBar.innerHTML = `<div class="count-val">0</div>`
+      barsContainer.appendChild(countBar)
+    }
+    
+    dynamicContainer.appendChild(countContainer)
+    
+    // Count occurrences with visualization
     for (let i = 0; i < arr.length; i++) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
+      
       count[arr[i]]++
-      await sleep(200)
+      
+      // Update count bar visualization
+      const countBar = barsContainer.children[arr[i]]
+      if (countBar) {
+        countBar.style.height = `${count[arr[i]] * 20}px`
+        countBar.querySelector('.count-val').textContent = count[arr[i]]
+      }
+      
+      await sleep(300)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
-
-    // Modify count array
+    
+    // Modify count array (cumulative sum)
     for (let i = 1; i <= max; i++) {
       count[i] += count[i - 1]
-      await sleep(100)
+      
+      // Update count bar heights
+      const countBar = barsContainer.children[i]
+      if (countBar) {
+        countBar.style.height = `${count[i] * 20}px`
+        countBar.querySelector('.count-val').textContent = count[i]
+      }
+      
+      await sleep(200)
     }
-
+    
     // Build output array
+    const output = new Array(arr.length)
     for (let i = arr.length - 1; i >= 0; i--) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
+      
       output[count[arr[i]] - 1] = arr[i]
       count[arr[i]]--
+      
+      // Update count bar
+      const countBar = barsContainer.children[arr[i]]
+      if (countBar) {
+        countBar.style.height = `${count[arr[i]] * 20}px`
+        countBar.querySelector('.count-val').textContent = count[arr[i]]
+      }
+      
       await sleep(300)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
-
+    
     // Copy back to original array with animation
     for (let i = 0; i < arr.length; i++) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
+      
       arr[i] = output[i]
       updateElementHeight(i, arr[i])
       setArray([...arr])
+      
       await sleep(300)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
-
+    
+    // Remove count container after sorting
+    setTimeout(() => {
+      if (countContainer.parentNode) {
+        countContainer.parentNode.removeChild(countContainer)
+      }
+    }, 1000)
+    
     setIsSorting(false)
   }
 
   // Radix Sort Animation
   const radixSort = async () => {
     setIsSorting(true)
+    clearCountArrays()
     let arr = [...array]
     let max = Math.max(...arr)
 
@@ -411,40 +490,115 @@ export default function SortingVisualizer() {
   const countingSortForRadix = async (arr, exp) => {
     let output = new Array(arr.length)
     let count = new Array(10).fill(0)
+    
+    // Create count array visualization for current digit
+    const dynamicContainer = document.getElementById('dynamic-containers')
+    const countContainer = document.createElement('div')
+    countContainer.id = 'radix-count-container'
+    countContainer.className = 'flex flex-col items-center'
+    
+    // Add title
+    const title = document.createElement('h3')
+    title.className = 'text-lg font-semibold text-slate-800 mb-2'
+    title.textContent = `Digit ${exp} Count Array`
+    countContainer.appendChild(title)
+    
+    // Add bars container
+    const barsContainer = document.createElement('div')
+    barsContainer.className = 'flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2'
+    barsContainer.style.background = '#DDDEAB'
+    countContainer.appendChild(barsContainer)
+    
+    // Create count bars for digits 0-9
+    for (let i = 0; i < 10; i++) {
+      const countBar = document.createElement('div')
+      countBar.className = 'radix-count-bar rounded transition-all duration-500 border-2 border-b-black'
+      countBar.style.height = '0px'
+      countBar.style.width = '25px'
+      countBar.innerHTML = `<div class="radix-count-val">0</div>`
+      barsContainer.appendChild(countBar)
+    }
+    
+    dynamicContainer.appendChild(countContainer)
 
+    // Count occurrences for current digit
     for (let i = 0; i < arr.length; i++) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
-      count[Math.floor(arr[i] / exp) % 10]++
+      
+      const digit = Math.floor(arr[i] / exp) % 10
+      count[digit]++
+      
+      // Update count bar visualization
+      const countBar = barsContainer.children[digit]
+      if (countBar) {
+        countBar.style.height = `${count[digit] * 20}px`
+        countBar.querySelector('.radix-count-val').textContent = count[digit]
+      }
+      
       await sleep(200)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
 
+    // Modify count array (cumulative sum)
     for (let i = 1; i < 10; i++) {
       count[i] += count[i - 1]
+      
+      // Update count bar heights
+      const countBar = barsContainer.children[i]
+      if (countBar) {
+        countBar.style.height = `${count[i] * 20}px`
+        countBar.querySelector('.radix-count-val').textContent = count[i]
+      }
+      
+      await sleep(100)
     }
 
+    // Build output array
     for (let i = arr.length - 1; i >= 0; i--) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
-      output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i]
-      count[Math.floor(arr[i] / exp) % 10]--
+      
+      const digit = Math.floor(arr[i] / exp) % 10
+      output[count[digit] - 1] = arr[i]
+      count[digit]--
+      
+      // Update count bar
+      const countBar = barsContainer.children[digit]
+      if (countBar) {
+        countBar.style.height = `${count[digit] * 20}px`
+        countBar.querySelector('.radix-count-val').textContent = count[digit]
+      }
+      
       await sleep(300)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
 
+    // Copy back to original array with animation
     for (let i = 0; i < arr.length; i++) {
       if (barsRef.current[i]) barsRef.current[i].classList.add('active')
       if (eleRef.current[i]) eleRef.current[i].classList.add('active')
+      
       arr[i] = output[i]
       updateElementHeight(i, arr[i])
       setArray([...arr])
+      
       await sleep(200)
+      
       if (barsRef.current[i]) barsRef.current[i].classList.remove('active')
       if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
     }
+    
+    // Remove count container after this digit is processed
+    setTimeout(() => {
+      if (countContainer.parentNode) {
+        countContainer.parentNode.removeChild(countContainer)
+      }
+    }, 500)
   }
 
   const sortingAlgorithms = {
@@ -460,12 +614,17 @@ export default function SortingVisualizer() {
 
   const handleSort = () => {
     if (selectedAlgorithm && sortingAlgorithms[selectedAlgorithm]) {
+      // Clear any existing count arrays when starting a new sort
+      if (selectedAlgorithm === 'counting' || selectedAlgorithm === 'radix') {
+        clearCountArrays()
+      }
       sortingAlgorithms[selectedAlgorithm]()
     }
   }
 
   const handleReset = () => {
     setSelectedAlgorithm('')
+    clearCountArrays()
     setArray(Array.from({ length: 8 }, () => Math.floor(Math.random() * 200) + 50))
   }
 
@@ -474,20 +633,26 @@ export default function SortingVisualizer() {
       <h1 className='text-2xl font-bold mb-4'>Sorting Visualizer</h1>
 
       {/* Bars */}
-      <div
-        id='container'
-        className='flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2'
-      >
-        {array.map((val, idx) => (
-          <div
-            key={idx}
-            className='bar rounded transition-all duration-500 border-2 border-b-black'
-            style={{ height: `${val}px`, width: '30px' }}
-          >
-            <div className='bar-val'>{val}</div>
-          </div>
-        ))}
+      <div className='flex flex-col items-center'>
+        <h3 className='text-lg font-semibold text-slate-800 mb-2'>Original Array</h3>
+        <div
+          id='container'
+          className='flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2'
+        >
+          {array.map((val, idx) => (
+            <div
+              key={idx}
+              className='bar rounded transition-all duration-500 border-2 border-b-black'
+              style={{ height: `${val}px`, width: '30px' }}
+            >
+              <div className='bar-val'>{val}</div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Dynamic count arrays will be inserted here */}
+      <div id='dynamic-containers' className='flex justify-center items-start gap-8 mt-4'></div>
 
       {/* Controls */}
       <div className='mt-4 space-y-3'>
@@ -584,6 +749,23 @@ export default function SortingVisualizer() {
           color: #DDDEAB;
           font-size: small;
           font-weight: bolder;
+        }
+        .count-bar, .radix-count-bar {
+          background: #4ECDC4;
+          border: 2px solid black;
+        }
+        .count-val, .radix-count-val {
+          display: flex; 
+          justify-content: center;
+          color: #DDDEAB;
+          font-size: small;
+          font-weight: bolder;
+          position: absolute;
+          bottom: -25px;
+          width: 100%;
+        }
+        #count-container, #radix-count-container {
+          position: relative;
         }
       `}</style>
     </div>
