@@ -259,46 +259,46 @@ export const CodeDisplay = ({ algorithm }) => {
 };
 
 // Demo App
-function App() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState("bfs");
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-4">
-            Modern Code Viewer
-          </h1>
-          <p className="text-slate-400 text-lg">
-            Select an algorithm to view its implementation in multiple languages
-          </p>
-        </div>
-
-        <div className="flex justify-center gap-4 mb-4">
-          <button
-            onClick={() => setSelectedAlgorithm("bfs")}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-              selectedAlgorithm === "bfs"
-                ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/50"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-            }`}
-          >
-            BFS Algorithm
-          </button>
-          <button
-            onClick={() => setSelectedAlgorithm("dfs")}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-              selectedAlgorithm === "dfs"
-                ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg shadow-purple-500/50"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-            }`}
-          >
-            DFS Algorithm
-          </button>
-        </div>
-
-        <CodeDisplay algorithm={selectedAlgorithm} />
-      </div>
-    </div>
-  );
-}
+// function App() {
+//   const [selectedAlgorithm, setSelectedAlgorithm] = useState("bfs");
+//
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 p-8">
+//       <div className="max-w-6xl mx-auto">
+//         <div className="text-center mb-8">
+//           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-4">
+//             Modern Code Viewer
+//           </h1>
+//           <p className="text-slate-400 text-lg">
+//             Select an algorithm to view its implementation in multiple languages
+//           </p>
+//         </div>
+//
+//         <div className="flex justify-center gap-4 mb-4">
+//           <button
+//             onClick={() => setSelectedAlgorithm("bfs")}
+//             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+//               selectedAlgorithm === "bfs"
+//                 ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/50"
+//                 : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+//             }`}
+//           >
+//             BFS Algorithm
+//           </button>
+//           <button
+//             onClick={() => setSelectedAlgorithm("dfs")}
+//             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+//               selectedAlgorithm === "dfs"
+//                 ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg shadow-purple-500/50"
+//                 : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+//             }`}
+//           >
+//             DFS Algorithm
+//           </button>
+//         </div>
+//
+//         <CodeDisplay algorithm={selectedAlgorithm} />
+//       </div>
+//     </div>
+//   );
+// }

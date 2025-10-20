@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('Home')
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("Home");
 
   const links = [
-    { name: 'Search', href: '/search' },
-    { name: 'Shortest Path', href: '/spath' },
-    { name: 'Sort', href: '/sort' },
-    { name: 'About', href: '/about' },
-  ]
+    { name: "Search", href: "/search" },
+    { name: "Shortest Path", href: "/spath" },
+    { name: "Sort", href: "/sort" },
+    { name: "About", href: "/about" },
+  ];
 
   return (
-    <header className='sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60'>
-      <nav className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-        <div className='flex h-16 items-center justify-between'>
-          <Link to='/' className='text-xl font-semibold tracking-tight'>
+    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link to="/" className="text-xl font-semibold tracking-tight">
             AlgoScope
           </Link>
 
-          <div className='hidden md:flex items-center gap-6'>
-            <ul className='flex items-center gap-1'>
-              {links.map(link => (
+          <div className="hidden md:flex items-center gap-6">
+            <ul className="flex items-center gap-1">
+              {links.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
                     onClick={() => setActive(link.name)}
                     className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       active === link.name
-                        ? 'bg-black text-white'
-                        : 'text-gray-700 hover:text-black hover:bg-gray-100'
+                        ? "bg-black text-white"
+                        : "text-gray-700 hover:text-black hover:bg-gray-100"
                     }`}
                   >
                     {link.name}
@@ -39,44 +39,44 @@ export const Navbar = () => {
               ))}
             </ul>
             <Link
-              to='#get-started'
-              className='inline-flex items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black'
+              to="#get-started"
+              className="inline-flex items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Get Started
             </Link>
           </div>
 
           <button
-            type='button'
-            aria-label='Toggle menu'
+            type="button"
+            aria-label="Toggle menu"
             aria-expanded={open}
-            onClick={() => setOpen(o => !o)}
-            className='md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black'
+            onClick={() => setOpen((o) => !o)}
+            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
           >
             <svg
-              className={`h-6 w-6 ${open ? 'hidden' : 'block'}`}
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
+              className={`h-6 w-6 ${open ? "hidden" : "block"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
             >
               <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M4 6h16M4 12h16M4 18h16'
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
             <svg
-              className={`h-6 w-6 ${open ? 'block' : 'hidden'}`}
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
+              className={`h-6 w-6 ${open ? "block" : "hidden"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
             >
               <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M6 18L18 6M6 6l12 12'
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
               />
             </svg>
           </button>
@@ -85,23 +85,23 @@ export const Navbar = () => {
 
       <div
         className={`md:hidden ${
-          open ? 'block' : 'hidden'
+          open ? "block" : "hidden"
         } border-t border-black/5 bg-white/90 backdrop-blur`}
       >
-        <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3'>
-          <ul className='space-y-1'>
-            {links.map(link => (
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
+          <ul className="space-y-1">
+            {links.map((link) => (
               <li key={link.name}>
                 <Link
                   to={link.href}
                   onClick={() => {
-                    setActive(link.name)
-                    setOpen(false)
+                    setActive(link.name);
+                    setOpen(false);
                   }}
                   className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     active === link.name
-                      ? 'bg-black text-white'
-                      : 'text-gray-700 hover:text-black hover:bg-gray-100'
+                      ? "bg-black text-white"
+                      : "text-gray-700 hover:text-black hover:bg-gray-100"
                   }`}
                 >
                   {link.name}
@@ -110,13 +110,13 @@ export const Navbar = () => {
             ))}
           </ul>
           <Link
-            to='#get-started'
-            className='mt-3 block text-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800'
+            to="#get-started"
+            className="mt-3 block text-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
           >
             Get Started
           </Link>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};

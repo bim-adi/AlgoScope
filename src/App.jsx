@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
-import { Home } from "./components/Home";
-import SortingVisualizer from "./components/SortingVisualizer";
-import { VisualizerPage } from "./components/searchAlgo/VisualizerPage";
-import { ShortestPathPage } from "./components/shortestPahAlgo/ShortestPathPage";
+import React, { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Navbar } from './components/Navbar'
+import { Home } from './components/Home'
+import SortingVisualizer from './components/sortingAlgo/Sorting'
+// import { Sorting } from './components/sortingAlgo/Sorting'
+import { VisualizerPage } from './components/searchAlgo/VisualizerPage'
+import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 
 function App() {
-
-
   const route = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: (
         <>
           <Navbar /> <Home />
@@ -19,7 +18,7 @@ function App() {
       ),
     },
     {
-      path: "/search",
+      path: '/search',
       element: (
         <>
           <Navbar />
@@ -35,7 +34,7 @@ function App() {
       ),
     },
     {
-      path: "/spath",
+      path: '/spath',
       element: (
         <>
           <Navbar />
@@ -58,7 +57,7 @@ function App() {
       ),
     },
     {
-      path: "/about",
+      path: '/about',
       element: (
         <>
           <Navbar />
@@ -66,7 +65,7 @@ function App() {
       ),
     },
     {
-      path: "/sort",
+      path: '/sort',
       element: (
         <>
           <Navbar />
@@ -74,13 +73,13 @@ function App() {
         </>
       ),
     },
-  ]);
+  ])
 
   return (
     <>
       <RouterProvider router={route} />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
