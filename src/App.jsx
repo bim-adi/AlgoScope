@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { CanvasSearching } from "./components/CanvasSearching";
-// import { MenuSetAlgoSearch } from "./components/MenuSetAlgoSearch";
-// import { MenuSelectNodeSearch } from "./components/MenuSelectNodeSearch";
 import { Navbar } from "./components/Navbar";
 import { Home } from "./components/Home";
-// import { CanvasShortestPath } from "./components/CanvasShortestPath";
-// import { MenuSetAlgoShortestPath } from "./components/MenuSetAlgoShortestPath";
-// import { MenuSelectNodesShortestPath } from "./components/MenuSelectNodesShortestPath";
 import SortingVisualizer from "./components/SortingVisualizer";
 import { VisualizerPage } from "./components/searchAlgo/VisualizerPage";
 import { ShortestPathPage } from "./components/shortestPahAlgo/ShortestPathPage";
 
 function App() {
-  // const [algorithm, setAlgorithm] = useState(null);
-  // const [vertex, setNode] = useState(null);
-  // const [spAlgorithm, setSpAlgorithm] = useState(null);
-  // const [source, setSource] = useState(null);
-  // const [target, setTarget] = useState(null);
+
 
   const route = createBrowserRouter([
     {

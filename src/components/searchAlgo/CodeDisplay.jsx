@@ -195,7 +195,7 @@ export const CodeDisplay = ({ algorithm }) => {
           <select
             value={language}
             onChange={handleLanguageChange}
-            className="flex-1 sm:flex-none bg-slate-400 text-black text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all hover:bg-slate-600"
+            className="flex-1 sm:flex-none bg-slate-700 text-white text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all hover:bg-slate-600"
           >
             <option value="javascript">JavaScript</option>
             <option value="python">Python</option>
@@ -204,7 +204,7 @@ export const CodeDisplay = ({ algorithm }) => {
           <select
             value={theme}
             onChange={handleThemeChange}
-            className="flex-1 sm:flex-none bg-slate-700 text-black text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all hover:bg-slate-600"
+            className="flex-1 sm:flex-none bg-slate-700 text-white text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all hover:bg-slate-600"
           >
             {Object.entries(themes).map(([key, { name }]) => (
               <option key={key} value={key}>
