@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { ShortestPathPage } from "./shortestPahAlgo/ShortestPathPage";
-import AlgoCard from "./AlgoCard";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { ShortestPathPage } from './shortestPahAlgo/ShortestPathPage'
+import AlgoCard from './AlgoCard'
 
 export const Home = () => {
   return (
@@ -35,5 +35,5 @@ export const Home = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}

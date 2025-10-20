@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import React, { useState } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   vscDarkPlus,
   oneDark,
@@ -7,7 +7,7 @@ import {
   tomorrow,
   atomDark,
   coldarkDark,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const codeSnippets = {
   bfs: {
@@ -153,30 +153,30 @@ void dfs(const std::map<int, std::vector<int>>& graph, int startNode) {
     dfs_recursive(graph, startNode, visited);
 }`,
   },
-};
+}
 
 const themes = {
-  vscDarkPlus: { style: vscDarkPlus, name: "VS Code Dark+" },
-  oneDark: { style: oneDark, name: "One Dark" },
-  dracula: { style: dracula, name: "Dracula" },
-  tomorrow: { style: tomorrow, name: "Tomorrow Night" },
-  atomDark: { style: atomDark, name: "Atom Dark" },
-  coldarkDark: { style: coldarkDark, name: "Coldark Dark" },
-};
+  vscDarkPlus: { style: vscDarkPlus, name: 'VS Code Dark+' },
+  oneDark: { style: oneDark, name: 'One Dark' },
+  dracula: { style: dracula, name: 'Dracula' },
+  tomorrow: { style: tomorrow, name: 'Tomorrow Night' },
+  atomDark: { style: atomDark, name: 'Atom Dark' },
+  coldarkDark: { style: coldarkDark, name: 'Coldark Dark' },
+}
 
 export const CodeDisplay = ({ algorithm }) => {
-  const [language, setLanguage] = useState("javascript");
-  const [theme, setTheme] = useState("vscDarkPlus");
+  const [language, setLanguage] = useState('javascript')
+  const [theme, setTheme] = useState('vscDarkPlus')
 
   const handleLanguageChange = (e) => {
-    setLanguage(e.target.value);
-  };
+    setLanguage(e.target.value)
+  }
 
   const handleThemeChange = (e) => {
-    setTheme(e.target.value);
-  };
+    setTheme(e.target.value)
+  }
 
-  const code = algorithm ? codeSnippets[algorithm][language] : "";
+  const code = algorithm ? codeSnippets[algorithm][language] : ''
 
   return (
     <div className="mt-8 mx-8 p-6 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl border border-slate-700">
@@ -188,7 +188,7 @@ export const CodeDisplay = ({ algorithm }) => {
           <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 ml-2">
             {algorithm
               ? `${algorithm.toUpperCase()} Implementation`
-              : "Code Viewer"}
+              : 'Code Viewer'}
           </h3>
         </div>
         <div className="flex gap-3 w-full sm:w-auto">
@@ -221,9 +221,9 @@ export const CodeDisplay = ({ algorithm }) => {
             style={themes[theme].style}
             customStyle={{
               margin: 0,
-              padding: "1.5rem",
-              fontSize: "0.95rem",
-              lineHeight: "1.6",
+              padding: '1.5rem',
+              fontSize: '0.95rem',
+              lineHeight: '1.6',
             }}
             showLineNumbers={true}
             wrapLongLines={true}
@@ -255,8 +255,8 @@ export const CodeDisplay = ({ algorithm }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 // Demo App
 // function App() {

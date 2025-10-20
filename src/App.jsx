@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
 import { Home } from './components/Home'
-import SortingVisualizer from './components/sortingAlgo/Sorting'
-// import { Sorting } from './components/sortingAlgo/Sorting'
+import SortingVisualizerPage from './components/sortingAlgo/VisualizerPage'
 import { VisualizerPage } from './components/searchAlgo/VisualizerPage'
 import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 
@@ -69,7 +68,7 @@ function App() {
       element: (
         <>
           <Navbar />
-          <SortingVisualizer />
+          <SortingVisualizerPage />
         </>
       ),
     },
