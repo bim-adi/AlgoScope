@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import React, { useState } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   vscDarkPlus,
   oneDark,
@@ -7,7 +7,7 @@ import {
   tomorrow,
   atomDark,
   coldarkDark,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const codeSnippets = {
   dijkstra: {
@@ -239,39 +239,39 @@ std::vector<std::vector<int>> floydWarshall(const std::vector<std::vector<std::p
     return dist;
 }`,
   },
-};
+}
 
 const themes = {
-  vscDarkPlus: { style: vscDarkPlus, name: "VS Code Dark+" },
-  oneDark: { style: oneDark, name: "One Dark" },
-  dracula: { style: dracula, name: "Dracula" },
-  tomorrow: { style: tomorrow, name: "Tomorrow Night" },
-  atomDark: { style: atomDark, name: "Atom Dark" },
-  coldarkDark: { style: coldarkDark, name: "Coldark Dark" },
-};
+  vscDarkPlus: { style: vscDarkPlus, name: 'VS Code Dark+' },
+  oneDark: { style: oneDark, name: 'One Dark' },
+  dracula: { style: dracula, name: 'Dracula' },
+  tomorrow: { style: tomorrow, name: 'Tomorrow Night' },
+  atomDark: { style: atomDark, name: 'Atom Dark' },
+  coldarkDark: { style: coldarkDark, name: 'Coldark Dark' },
+}
 
 export const CodeDisplayShortestPath = ({ algorithm }) => {
-  const [language, setLanguage] = useState("javascript");
-  const [theme, setTheme] = useState("vscDarkPlus");
+  const [language, setLanguage] = useState('javascript')
+  const [theme, setTheme] = useState('vscDarkPlus')
 
   const handleLanguageChange = (e) => {
-    setLanguage(e.target.value);
-  };
+    setLanguage(e.target.value)
+  }
 
   const handleThemeChange = (e) => {
-    setTheme(e.target.value);
-  };
+    setTheme(e.target.value)
+  }
 
-  const code = algorithm ? codeSnippets[algorithm]?.[language] : "";
+  const code = algorithm ? codeSnippets[algorithm]?.[language] : ''
 
   const getAlgorithmName = (algo) => {
     const names = {
       dijkstra: "Dijkstra's",
-      bellmanford: "Bellman-Ford",
-      floydwarshall: "Floyd-Warshall",
-    };
-    return names[algo] || algo;
-  };
+      bellmanford: 'Bellman-Ford',
+      floydwarshall: 'Floyd-Warshall',
+    }
+    return names[algo] || algo
+  }
 
   return (
     <div className="mt-8 mx-8 p-6 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl border border-slate-700">
@@ -283,10 +283,10 @@ export const CodeDisplayShortestPath = ({ algorithm }) => {
           <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 ml-2">
             {algorithm
               ? `${getAlgorithmName(algorithm)} Implementation`
-              : "Code Viewer"}
+              : 'Code Viewer'}
           </h3>
         </div>
-        <div className="flex gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <select
             value={language}
             onChange={handleLanguageChange}
@@ -316,14 +316,14 @@ export const CodeDisplayShortestPath = ({ algorithm }) => {
             style={themes[theme].style}
             customStyle={{
               margin: 0,
-              padding: "1.5rem",
-              fontSize: "0.95rem",
-              lineHeight: "1.6",
+              padding: '1.5rem',
+              fontSize: '0.95rem',
+              lineHeight: '1.6',
             }}
             showLineNumbers={true}
             wrapLongLines={true}
           >
-            {code || "Code for this language is not available."}
+            {code || 'Code for this language is not available.'}
           </SyntaxHighlighter>
         </div>
       ) : (
@@ -350,12 +350,12 @@ export const CodeDisplayShortestPath = ({ algorithm }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 // Demo App
 function Demo() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState("dijkstra");
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('dijkstra')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 p-8">
@@ -371,31 +371,31 @@ function Demo() {
 
         <div className="flex flex-wrap justify-center gap-4 mb-4">
           <button
-            onClick={() => setSelectedAlgorithm("dijkstra")}
+            onClick={() => setSelectedAlgorithm('dijkstra')}
             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-              selectedAlgorithm === "dijkstra"
-                ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/50"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+              selectedAlgorithm === 'dijkstra'
+                ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/50'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             }`}
           >
             Dijkstra's Algorithm
           </button>
           <button
-            onClick={() => setSelectedAlgorithm("bellmanford")}
+            onClick={() => setSelectedAlgorithm('bellmanford')}
             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-              selectedAlgorithm === "bellmanford"
-                ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg shadow-purple-500/50"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+              selectedAlgorithm === 'bellmanford'
+                ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg shadow-purple-500/50'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             }`}
           >
             Bellman-Ford Algorithm
           </button>
           <button
-            onClick={() => setSelectedAlgorithm("floydwarshall")}
+            onClick={() => setSelectedAlgorithm('floydwarshall')}
             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-              selectedAlgorithm === "floydwarshall"
-                ? "bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-lg shadow-pink-500/50"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+              selectedAlgorithm === 'floydwarshall'
+                ? 'bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-lg shadow-pink-500/50'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
             }`}
           >
             Floyd-Warshall Algorithm
@@ -405,5 +405,5 @@ function Demo() {
         <CodeDisplayShortestPath algorithm={selectedAlgorithm} />
       </div>
     </div>
-  );
+  )
 }

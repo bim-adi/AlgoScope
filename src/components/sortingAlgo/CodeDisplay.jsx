@@ -327,135 +327,173 @@ int partition(int arr[], int low, int high) {
 }`,
   },
   merge: {
-    javascript: `function mergeSort(arr, left, right) {
-  if (left < right) {
-    let mid = Math.floor((left + right) / 2);
-    mergeSort(arr, left, mid);
-    mergeSort(arr, mid + 1, right);
-    merge(arr, left, mid, right);
-  }
-}
+    javascript: `/**
+ * Merges two sorted arrays into one sorted array.
+ * @param {Array<number>} arr1 - The first sorted array.
+ * @param {Array<number>} arr2 - The second sorted array.
+ * @returns {Array<number>} - The merged sorted array.
+ */
+function merge(arr1, arr2) {
+  let results = [];
+  let i = 0; // Pointer for arr1
+  let j = 0; // Pointer for arr2
 
-function merge(arr, left, mid, right) {
-  let leftArr = arr.slice(left, mid + 1);
-  let rightArr = arr.slice(mid + 1, right + 1);
-  let i = 0, j = 0, k = left;
-  while (i < leftArr.length && j < rightArr.length) {
-    highlightActive(k);
-    if (leftArr[i] <= rightArr[j]) {
-      arr[k] = leftArr[i];
+  // Loop while there are still elements in both arrays
+  while (i < arr1.length && j < arr2.length) {
+    if (arr2[j] > arr1[i]) {
+      results.push(arr1[i]);
       i++;
     } else {
-      arr[k] = rightArr[j];
+      results.push(arr2[j]);
       j++;
     }
-    updateElementHeight(k, arr[k]);
-    dehighlightActive(k);
-    k++;
   }
-  while (i < leftArr.length) { /* ... */ }
-  while (j < rightArr.length) { /* ... */ }
-}`,
-    python: `def merge_sort(arr, left, right):
-    if left < right:
-        mid = (left + right) // 2
-        merge_sort(arr, left, mid)
-        merge_sort(arr, mid + 1, right)
-        merge(arr, left, mid, right)
 
-def merge(arr, left, mid, right):
-    left_arr = arr[left : mid + 1]
-    right_arr = arr[mid + 1 : right + 1]
-    i = j = 0
-    k = left
-    while i < len(left_arr) and j < len(right_arr):
-        highlight_active(k)
-        if left_arr[i] <= right_arr[j]:
-            arr[k] = left_arr[i]
+  // Add remaining elements from arr1 (if any)
+  while (i < arr1.length) {
+    results.push(arr1[i]);
+    i++;
+  }
+
+  // Add remaining elements from arr2 (if any)
+  while (j < arr2.length) {
+    results.push(arr2[j]);
+    j++;
+  }
+
+  return results;
+}
+
+/**
+ * Sorts an array of numbers using the Merge Sort algorithm.
+ * @param {Array<number>} arr - The array to sort.
+ * @returns {Array<number>} - The new sorted array.
+ */
+function mergeSort(arr) {
+  // Base case: An array with 0 or 1 element is already sorted
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  // Find the middle of the array
+  let mid = Math.floor(arr.length / 2);
+  
+  // Recursively sort the left half
+  let left = mergeSort(arr.slice(0, mid));
+  
+  // Recursively sort the right half
+  let right = mergeSort(arr.slice(mid));
+
+  // Merge the two sorted halves
+  return merge(left, right);
+}
+
+// Example usage:
+const arr = [10, 24, 76, 73, 72, 1, 9];
+console.log("Original array:", arr);
+const sortedArr = mergeSort(arr);
+console.log("Sorted array:", sortedArr);`,
+    python: `def merge(arr, l, m, r):
+    n1 = m - l + 1
+    n2 = r - m
+    L = [0] * (n1)
+    R = [0] * (n2)
+    for i in range(0, n1): L[i] = arr[l + i]
+    for j in range(0, n2): R[j] = arr[m + 1 + j]
+    # Merge the temp arrays back into arr[l..r]
+    i = 0     # Initial index of first subarray
+    j = 0     # Initial index of second subarray
+    k = l     # Initial index of merged subarray
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
+            arr[k] = L[i]
             i += 1
         else:
-            arr[k] = right_arr[j]
+            arr[k] = R[j]
             j += 1
-        update_element_height(k, arr[k])
-        dehighlight_active(k)
         k += 1
-    # ... copy remaining elements ...`,
-    java: `public void mergeSort(int[] arr, int left, int right) {
-    if (left < right) {
-        int mid = (left + right) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
-}
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
 
-void merge(int[] arr, int left, int mid, int right) {
-    int[] leftArr = Arrays.copyOfRange(arr, left, mid + 1);
-    int[] rightArr = Arrays.copyOfRange(arr, mid + 1, right + 1);
-    int i = 0, j = 0, k = left;
-    while (i < leftArr.length && j < rightArr.length) {
-        highlightActive(k);
-        if (leftArr[i] <= rightArr[j]) {
-            arr[k] = leftArr[i];
-            i++;
-        } else {
-            arr[k] = rightArr[j];
-            j++;
+def mergeSort(arr, l, r):
+    if l < r:
+        m = l+(r-l)//2
+        mergeSort(arr, l, m)
+        mergeSort(arr, m+1, r)
+        merge(arr, l, m, r)`,
+    java: `public class Merge {
+    private static void merge(int[] toSort, int s, int m, int e) {
+        int[] toCopy = new int[e - s + 1];
+        int j = m + 1, i = s, k = 0;
+        while(i <= m && j <= e) {
+            if(toSort[i] < toSort[j]) toCopy[k++] = toSort[i++];
+            else toCopy[k++] = toSort[j++];
+        } while(i <= m) toCopy[k++] = toSort[i++];
+        while(j <= e) toCopy[k++] = toSort[j++];
+        for(int x = 0; x < k; x++) toSort[x + s] = toCopy[x];
+    }
+
+    private static void mergeSort(int[] toSort, int s, int e) {
+        if(s < e) {
+            int mid = (s + e) / 2;
+            mergeSort(toSort, s, mid);
+            mergeSort(toSort, mid + 1, e);
+            merge(toSort, s, mid, e);
         }
-        updateElementHeight(k, arr[k]);
-        dehighlightActive(k);
-        k++;
     }
-    // ... copy remaining elements ...
-}`,
-    cpp: `void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+
+    public static int[] mergeSort(int[] toSort) {
+        mergeSort(toSort, 0, toSort.length - 1);
+        return toSort;
+    }
+}
+`,
+    cpp: `#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int> &toSort, int s, int mid, int e) {
+    int i = s, j = mid + 1, k = 0;
+    vector<int> sorted(e - s + 1);
+    while(i <= mid && j <= e) {
+        if(toSort[i] < toSort[j]) sorted[k++] = toSort[i++];
+        else sorted[k++] = toSort[j++];
+    } while (i <= mid) sorted[k++] = toSort[i++];
+    while(j <= e) sorted[k++] = toSort[j++];
+    for(int x = 0; x < k; x++) toSort[x + s] = sorted[x];
+}
+
+void mergeSort(vector<int> &toSort, int s, int e) {
+    if( s < e) {
+        int m = (s + e) / 2;
+        mergeSort(toSort, s, m);
+        mergeSort(toSort, m + 1, e);    
+        merge(toSort, s, m, e);
     }
 }
 
-void merge(int arr[], int left, int mid, int right) {
-    // ... implementation ...
+int main() {
+    vector<int> toSort = {5, 2, 8, 3, 1, 6, 4};
+    int size = toSort.size();
+    cout << "Before sorting: ";
+    for(int i = 0; i < size; i++) cout << toSort[i] << " ";
+    
+    cout << endl;
+    mergeSort(toSort, 0, size - 1);
+    cout << "After sorting: ";
+    for(int i = 0; i < size; i++) cout << toSort[i] << " ";
+    cout << endl;
 }`,
   },
   heap: {
-    javascript: `function heapSort(arr) {
-  let n = arr.length;
-  for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-    heapify(arr, n, i);
-  }
-  for (let i = n - 1; i > 0; i--) {
-    [arr[0], arr[i]] = [arr[i], arr[0]];
-    swapVisuals(0, i);
-    heapify(arr, i, 0);
-  }
-}
-
-function heapify(arr, n, i) {
-  let largest = i;
-  let left = 2 * i + 1;
-  let right = 2 * i + 2;
-  highlightPivot(i);
-  if (left < n && arr[left] > arr[largest]) {
-    largest = left;
-  }
-  if (right < n && arr[right] > arr[largest]) {
-    largest = right;
-  }
-  if (largest !== i) {
-    highlightActive(largest);
-    [arr[i], arr[largest]] = [arr[largest], arr[i]];
-    swapVisuals(i, largest);
-    dehighlightActive(largest);
-    dehighlightPivot(i);
-    heapify(arr, n, largest);
-  } else {
-    dehighlightPivot(i);
-  }
-}`,
+    javascript: `
+`,
     python: `def heap_sort(arr):
     n = len(arr)
     for i in range(n // 2 - 1, -1, -1):
@@ -555,6 +593,338 @@ void heapSort(int arr[], int n) {
     }
 }`,
   },
+  radix: {
+    javascript: `function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
+  return maxDigits;
+}
+
+function radixSort(nums) {
+  let maxDigitCount = mostDigits(nums);
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => []);
+    for (let i = 0; i < nums.length; i++) {
+      let digit = getDigit(nums[i], k);
+      digitBuckets[digit].push(nums[i]);
+    }
+    nums = [].concat(...digitBuckets);
+  }
+  return nums;
+}
+
+// Example usage:
+const arr = [170, 45, 75, 90, 802, 24, 2, 66];
+console.log("Original array:", arr);
+const sortedArr = radixSort(arr);
+console.log("Sorted array:", sortedArr);`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int getMax(std::vector<int>& arr) {
+    int mx = arr[0];
+    for (size_t i = 1; i < arr.size(); i++)
+        if (arr[i] > mx)
+            mx = arr[i];
+    return mx;
+}
+
+void countSort(std::vector<int>& arr, int exp) {
+    int n = arr.size();
+    std::vector<int> output(n);
+    std::vector<int> count(10, 0);
+
+    for (int i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+
+    for (int i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    for (int i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+void radixSort(std::vector<int>& arr) {
+    if (arr.empty()) return;
+    int m = getMax(arr);
+
+    for (int exp = 1; m / exp > 0; exp *= 10)
+        countSort(arr, exp);
+}
+
+void printArray(const std::vector<int>& arr) {
+    for (int val : arr) {
+        std::cout << val << " ";
+    }
+    std::cout << "\n";
+}
+
+int main() {
+    std::vector<int> arr = { 170, 45, 75, 90, 802, 24, 2, 66 };
+    
+    std::cout << "Original array: ";
+    printArray(arr);
+
+    radixSort(arr);
+    
+    std::cout << "Sorted array: ";
+    printArray(arr);
+    
+    return 0;
+}`,
+    python: `def counting_sort(arr, exp):
+    n = len(arr)
+    output = [0] * n
+    count = [0] * 10
+
+    for i in range(n):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    i = n - 1
+    while i >= 0:
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+        i -= 1
+
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr):
+    if not arr:
+        return arr
+        
+    max_num = max(arr)
+    exp = 1
+    while max_num // exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+    return arr
+
+# Example usage:
+arr = [170, 45, 75, 90, 802, 24, 2, 66]
+print("Original array:", arr)
+radix_sort(arr)
+print("Sorted array:", arr)`,
+    java: `import java.util.Arrays;
+import java.util.Collections;
+
+class RadixSort {
+
+    static int getMax(int arr[], int n) {
+        int mx = arr[0];
+        for (int i = 1; i < n; i++)
+            if (arr[i] > mx)
+                mx = arr[i];
+        return mx;
+    }
+
+    static void countSort(int arr[], int n, int exp) {
+        int output[] = new int[n];
+        int i;
+        int count[] = new int[10];
+        Arrays.fill(count, 0);
+
+        for (i = 0; i < n; i++)
+            count[(arr[i] / exp) % 10]++;
+
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        for (i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        for (i = 0; i < n; i++)
+            arr[i] = output[i];
+    }
+
+    static void radixSort(int arr[], int n) {
+        if (n == 0) return;
+        int m = getMax(arr, n);
+
+        for (int exp = 1; m / exp > 0; exp *= 10)
+            countSort(arr, n, exp);
+    }
+
+    public static void main(String[] args) {
+        int arr[] = { 170, 45, 75, 90, 802, 24, 2, 66 };
+        int n = arr.length;
+        
+        System.out.println("Original array: " + Arrays.toString(arr));
+        radixSort(arr, n);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+    }
+}`,
+  },
+  counting: {
+    java: `import java.util.Arrays;
+
+class CountingSort {
+
+    public static void sort(int[] arr) {
+        if (arr.length == 0) {
+            return;
+        }
+
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+
+        int[] count = new int[max + 1];
+
+        for (int num : arr) {
+            count[num]++;
+        }
+
+        int sortedIndex = 0;
+        for (int i = 0; i <= max; i++) {
+            while (count[i] > 0) {
+                arr[sortedIndex] = i;
+                sortedIndex++;
+                count[i]--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 4, 2, 2, 8, 3, 3, 1, 0, 7 };
+        System.out.println("Original array: " + Arrays.toString(arr));
+        sort(arr);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+    }
+}`,
+    python: `def counting_sort(arr):
+    if not arr:
+        return []
+
+    max_val = max(arr)
+    
+    count = [0] * (max_val + 1)
+
+    for num in arr:
+        count[num] += 1
+
+    sorted_index = 0
+    for i in range(max_val + 1):
+        while count[i] > 0:
+            arr[sorted_index] = i
+            sorted_index += 1
+            count[i] -= 1
+    return arr
+
+# Example usage:
+arr = [4, 2, 2, 8, 3, 3, 1, 0, 7]
+print("Original array:", arr)
+counting_sort(arr)
+print("Sorted array:", arr)`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm> // For std::max_element
+
+void countingSort(std::vector<int>& arr) {
+    if (arr.empty()) {
+        return;
+    }
+
+    int max = *std::max_element(arr.begin(), arr.end());
+
+    std::vector<int> count(max + 1, 0);
+
+    for (int num : arr) {
+        count[num]++;
+    }
+
+    int sortedIndex = 0;
+    for (int i = 0; i <= max; i++) {
+        while (count[i] > 0) {
+            arr[sortedIndex] = i;
+            sortedIndex++;
+            count[i]--;
+        }
+    }
+}
+
+void printArray(const std::vector<int>& arr) {
+    for (int val : arr) {
+        std::cout << val << " ";
+    }
+    std::cout << "\n";
+}
+
+int main() {
+    std::vector<int> arr = { 4, 2, 2, 8, 3, 3, 1, 0, 7 };
+    
+    std::cout << "Original array: ";
+    printArray(arr);
+
+    countingSort(arr);
+    
+    std::cout << "Sorted array: ";
+    printArray(arr);
+    
+    return 0;
+}`,
+    javascript: `function countingSort(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+  const count = new Array(max + 1).fill(0);
+
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i]]++;
+  }
+
+  let sortedIndex = 0;
+  for (let i = 0; i <= max; i++) {
+    while (count[i] > 0) {
+      arr[sortedIndex] = i;
+      sortedIndex++;
+      count[i]--;
+    }
+  }
+  return arr;
+}
+
+// Example usage:
+const arr = [4, 2, 2, 8, 3, 3, 1, 0, 7];
+console.log("Original array:", arr);
+countingSort(arr);
+console.log("Sorted array:", arr);`,
+  },
 }
 export const CodeDisplay = ({ algorithm }) => {
   const [language, setLanguage] = useState('javascript')
@@ -570,15 +940,17 @@ export const CodeDisplay = ({ algorithm }) => {
   return (
     <div className="mt-8 mx-8 p-6 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl border border-slate-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <div className="w-5 h-5 rounded-full bg-red-500"></div>
-        <div className="w-5 h-5 rounded-full bg-yellow-500"></div>
-        <div className="w-5 h-5 rounded-full bg-green-500"></div>
+        <div className="flex flex-row gap-3">
+          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
         <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 ml-2">
           {algorithm
             ? `${algorithm.charAt(0).toUpperCase() + algorithm.slice(1)} Sort`
-            : 'Select an Algorithm'}
+            : 'Code Viewer'}
         </h3>
-        <div className="flex gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
@@ -645,4 +1017,3 @@ export const CodeDisplay = ({ algorithm }) => {
     </div>
   )
 }
-

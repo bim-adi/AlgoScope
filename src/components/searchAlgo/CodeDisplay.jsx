@@ -191,7 +191,7 @@ export const CodeDisplay = ({ algorithm }) => {
               : 'Code Viewer'}
           </h3>
         </div>
-        <div className="flex gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <select
             value={language}
             onChange={handleLanguageChange}

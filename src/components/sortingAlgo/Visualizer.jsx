@@ -542,14 +542,14 @@ export default function Visualizer({ algorithmType }) {
               <button
                 onClick={handleSort}
                 disabled={isSorting || !selectedAlgorithm}
-                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-slate-100 text-black"
+                className="border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300'"
               >
                 {isSorting ? 'Sorting...' : 'Start Sort'}
               </button>
               <button
                 onClick={handleReset}
                 disabled={isSorting}
-                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-slate-100 text-black"
+                className="border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300' "
               >
                 Generate New Array
               </button>
