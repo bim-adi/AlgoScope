@@ -46,7 +46,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
 
         const options = {
             physics: { 
-                enabled: true,
+                enabled: false,
                 stabilization: {
                     enabled: true,
                     iterations: 100,
@@ -86,7 +86,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
                 width: 3,
                 smooth: {
                     type: 'curvedCW',
-                    roundness: 0.2
+                    roundness: 0.0
                 },
                 shadow: {
                     enabled: true,
