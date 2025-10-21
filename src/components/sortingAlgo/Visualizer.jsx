@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { CodeDisplay } from './CodeDisplay'
+import SpeedSlider from '../SpeedSlider.jsx'
 
 const CountArrayDisplay = ({ title, data, barWidth = 20 }) => (
   <div className="flex flex-col items-center">
@@ -33,6 +34,7 @@ export default function Visualizer({ algorithmType }) {
   const [countArray, setCountArray] = useState([])
   const [radixCountArray, setRadixCountArray] = useState([])
   const [currentRadixDigit, setCurrentRadixDigit] = useState(1)
+  const [speed, setSpeed] = useState(1)
   const barsRef = useRef([])
   const eleRef = useRef([])
 
@@ -41,7 +43,7 @@ export default function Visualizer({ algorithmType }) {
     eleRef.current = document.querySelectorAll('.array-ele')
   }, [array])
 
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+  const sleep = (ms) => new Promise((r) => setTimeout(r, Math.max(0, ms / speed)))
 
   const updateArrayAndVisuals = (newArray, index1, index2) => {
     setArray([...newArray])
@@ -537,6 +539,9 @@ export default function Visualizer({ algorithmType }) {
                   </select>
                 </div>
               </div>
+            </div>
+            <div className="mt-4">
+              <SpeedSlider value={speed} onChange={(e, v) => setSpeed(v)} min={0.25} max={3} step={0.05} />
             </div>
             <div className="mt-4 gap-4 flex">
               <button
