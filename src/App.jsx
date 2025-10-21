@@ -20,12 +20,12 @@ function App() {
       path: '/search',
       element: (
         <>
-          <Navbar />
           <div className="flex flex-col md:flex-row">
             {/* <CanvasSearching algorithm={algorithm} vertex={vertex} /> */}
             <div className="flex flex-col gap-4 p-4 m-auto">
               {/* <MenuSetAlgoSearch setAlgorithm={setAlgorithm} /> */}
               {/* <MenuSelectNodeSearch setNode={setNode} /> */}
+              <Navbar />
               <VisualizerPage />
             </div>
           </div>
@@ -36,7 +36,6 @@ function App() {
       path: '/spath',
       element: (
         <>
-          <Navbar />
           <div className="flex flex-col md:flex-row">
             {/* <CanvasShortestPath */}
             {/*   algorithm={spAlgorithm} */}
@@ -49,6 +48,7 @@ function App() {
               {/*   setSource={setSource} */}
               {/*   setTarget={setTarget} */}
               {/* /> */}
+              <Navbar />
               <ShortestPathPage />
             </div>
           </div>
@@ -67,9 +67,9 @@ function App() {
       path: '/sort',
       element: (
         <>
-          <Navbar />
           <div className="flex flex-col md:flex-row">
-            <div className="flex flex-col gap-4 p-4 m-auto">
+            <div className="flex flex-col m-auto">
+              <Navbar />
               <SortingVisualizerPage />
             </div>
           </div>
