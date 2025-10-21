@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react'
 
 export const MenuSelectNodeSearch = ({ setNode }) => {
   const handleChange = (e) => {
-    setNode(e.target.value);
-  };
+    setNode(e.target.value)
+  }
 
   const handleReset = () => {
-    setNode(null);
-  };
+    setNode(null)
+  }
 
   return (
     <div className="space-y-3">
       <h3 className="text-lg font-semibold text-slate-800">Starting Node</h3>
       <form className="m-auto">
-        <div className="w-full max-w-sm min-w-[200px]">
+        <div className="w-full ma-w-sm min-w-[200px]">
           <div className="relative">
             <select
               onChange={handleChange}
@@ -50,5 +50,5 @@ export const MenuSelectNodeSearch = ({ setNode }) => {
         Reset
       </button>
     </div>
-  );
-};
+  )
+}
