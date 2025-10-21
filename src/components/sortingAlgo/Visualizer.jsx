@@ -43,7 +43,8 @@ export default function Visualizer({ algorithmType }) {
     eleRef.current = document.querySelectorAll('.array-ele')
   }, [array])
 
-  const sleep = (ms) => new Promise((r) => setTimeout(r, Math.max(0, ms / speed)))
+  const sleep = (ms) =>
+    new Promise((r) => setTimeout(r, Math.max(0, ms / speed)))
 
   const updateArrayAndVisuals = (newArray, index1, index2) => {
     setArray([...newArray])
@@ -541,20 +542,26 @@ export default function Visualizer({ algorithmType }) {
               </div>
             </div>
             <div className="mt-4">
-              <SpeedSlider value={speed} onChange={(e, v) => setSpeed(v)} min={0.25} max={3} step={0.05} />
+              <SpeedSlider
+                value={speed}
+                onChange={(e, v) => setSpeed(v)}
+                min={0.25}
+                max={3}
+                step={0.05}
+              />
             </div>
             <div className="mt-4 gap-4 flex">
               <button
                 onClick={handleSort}
                 disabled={isSorting || !selectedAlgorithm}
-                className="border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300'"
+                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-stone-950 text-white hover:bg-slate-700"
               >
                 {isSorting ? 'Sorting...' : 'Start Sort'}
               </button>
               <button
                 onClick={handleReset}
                 disabled={isSorting}
-                className="border-b-black border-2 w-full bg-stone-950 hover:bg-slate-100 text-white hover:text-black text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300' "
+                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-stone-950 text-white hover:bg-slate-700"
               >
                 Generate New Array
               </button>
