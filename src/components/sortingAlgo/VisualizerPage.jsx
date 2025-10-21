@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Visualizer from './Visualizer';
+import React, { useState } from 'react'
+import Visualizer from './Visualizer'
 
 export default function VisualizerPage() {
-  const [algorithmType, setAlgorithmType] = useState('simple');
+  const [algorithmType, setAlgorithmType] = useState('simple')
 
   return (
-    <div>
+    <div className="bg-slate-50 mx-auto min-h-screen shadow-md rounded-lg">
       <div className="flex justify-center p-4">
         <select
           value={algorithmType}
@@ -19,5 +19,5 @@ export default function VisualizerPage() {
       </div>
       <Visualizer algorithmType={algorithmType} />
     </div>
-  );
+  )
 }

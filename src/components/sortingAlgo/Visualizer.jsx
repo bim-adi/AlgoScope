@@ -460,8 +460,8 @@ export default function Visualizer({ algorithmType }) {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row p-6">
-      <div className="w-full lg:w-3/5">
+    <div className="flex flex-col p-6">
+      <div className="w-full">
         <div className="flex flex-col items-center">
           <h1 className="text-2xl font-bold mb-4">
             {`${algorithmType.charAt(0).toUpperCase() + algorithmType.slice(1)} Sorting`}
@@ -558,7 +558,7 @@ export default function Visualizer({ algorithmType }) {
         </div>
       </div>
 
-      <div className="w-full lg:w-2/5 mt-8 lg:mt-0">
+      <div className="w-full">
         <CodeDisplay algorithm={selectedAlgorithm} />
       </div>
 

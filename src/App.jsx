@@ -68,7 +68,11 @@ function App() {
       element: (
         <>
           <Navbar />
-          <SortingVisualizerPage />
+          <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col gap-4 p-4 m-auto">
+              <SortingVisualizerPage />
+            </div>
+          </div>
         </>
       ),
     },
