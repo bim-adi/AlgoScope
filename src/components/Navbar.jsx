@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("Home");
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('Home')
 
   const links = [
-    { name: "Search", href: "/search" },
-    { name: "Shortest Path", href: "/spath" },
-    { name: "Sort", href: "/sort" },
-    { name: "About", href: "/about" },
-  ];
+    { name: 'Search', href: '/search' },
+    { name: 'Shortest Path', href: '/spath' },
+    { name: 'Sort', href: '/sort' },
+    { name: 'About', href: '/about' },
+  ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 rounded shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="text-xl font-semibold tracking-tight">
@@ -29,8 +29,8 @@ export const Navbar = () => {
                     onClick={() => setActive(link.name)}
                     className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       active === link.name
-                        ? "bg-black text-white"
-                        : "text-gray-700 hover:text-black hover:bg-gray-100"
+                        ? 'bg-black text-white'
+                        : 'text-gray-700 hover:text-black hover:bg-gray-100'
                     }`}
                   >
                     {link.name}
@@ -54,7 +54,7 @@ export const Navbar = () => {
             className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"
           >
             <svg
-              className={`h-6 w-6 ${open ? "hidden" : "block"}`}
+              className={`h-6 w-6 ${open ? 'hidden' : 'block'}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -67,7 +67,7 @@ export const Navbar = () => {
               />
             </svg>
             <svg
-              className={`h-6 w-6 ${open ? "block" : "hidden"}`}
+              className={`h-6 w-6 ${open ? 'block' : 'hidden'}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -85,7 +85,7 @@ export const Navbar = () => {
 
       <div
         className={`md:hidden ${
-          open ? "block" : "hidden"
+          open ? 'block' : 'hidden'
         } border-t border-black/5 bg-white/90 backdrop-blur`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
@@ -95,13 +95,13 @@ export const Navbar = () => {
                 <Link
                   to={link.href}
                   onClick={() => {
-                    setActive(link.name);
-                    setOpen(false);
+                    setActive(link.name)
+                    setOpen(false)
                   }}
                   className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     active === link.name
-                      ? "bg-black text-white"
-                      : "text-gray-700 hover:text-black hover:bg-gray-100"
+                      ? 'bg-black text-white'
+                      : 'text-gray-700 hover:text-black hover:bg-gray-100'
                   }`}
                 >
                   {link.name}
@@ -118,5 +118,5 @@ export const Navbar = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
