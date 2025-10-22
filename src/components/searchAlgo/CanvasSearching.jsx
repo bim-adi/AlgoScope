@@ -6,7 +6,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
   const networkRef = useRef(null)
   const nodesRef = useRef(null)
   const edgesRef = useRef(null)
-  const [status, setStatus] = useState('select an algo to display progress...'); 
+  const [status, setStatus] = useState('select an algo to display progress...')
 
   // initialize network
   useEffect(() => {
@@ -192,8 +192,8 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           color: { background: '#ff4136', border: '#000000' },
           size: 35,
         })
-        console.log(`node ${id} is visited.`);
-        setStatus(`node ${id} is visited.`);
+        console.log(`node ${id} is visited.`)
+        setStatus(`node ${id} is visited.`)
         // Add pulsing effect
         setTimeout(() => {
           nodes.update({ id, size: 30 })
@@ -296,12 +296,12 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
       <div
         id="cy"
         ref={containerRef}
-        className="h-[600px] m-8 rounded-lg border-2 border-stone-500 bg-gradient-to-br from-yellow-50 to-yellow-100 shadow-lg md:w-auto lg:w-auto xl:w-auto 2xl:w-auto"
+        className="h-[600px] m-auto rounded-lg border-2 border-stone-500 bg-gradient-to-br from-yellow-50 to-yellow-100 shadow-lg w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto "
         style={{
           background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
         }}
       />
-      <StatusDisplay message={status}/>
+      <StatusDisplay message={status} />
     </>
   )
 }
