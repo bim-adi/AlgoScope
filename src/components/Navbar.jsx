@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 // 1. Import motion and AnimatePresence
 import { motion, AnimatePresence } from 'framer-motion'
+import githubIcon from '../assets/github-mark-white.svg'
 
 // 2. Define the bounce transition
 const bounceTransition = {
@@ -99,9 +100,14 @@ export const Navbar = () => {
             </ul>
             <Link
               to="https://github.com/bim-adi/AlgoScope"
-              className="inline-flex items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="inline-flex items-center rounded-3xl bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Get Started
+              <img
+                src={githubIcon}
+                alt="github"
+                className="w-7 h-5 hover:text-gray-400 pr-2"
+              />
+              <span className='p-1'>Github</span>
             </Link>
           </div>
 

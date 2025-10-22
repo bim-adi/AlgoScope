@@ -5,6 +5,7 @@ import { MenuSelectNodeSearch } from './MenuSelectNodeSearch'
 import { MenuSelectAlgorithm } from './MenuSelectAlgorithm'
 import StatusDisplay from '../StatusDisplay'
 import { motion } from 'framer-motion'
+import Footer from '../Footer'
 
 export const VisualizerPage = () => {
   const [node, setNode] = useState(null)
@@ -21,29 +22,31 @@ export const VisualizerPage = () => {
   }
 
   return (
-    <motion.div
-      className="lg:w-full w-86  flex flex-col lg:flex-row p-4 bg-slate-50 min-h-screen shadow-md rounded-lg backdrop-blur supports-[backdrop-filter]:bg-white/60 "
-      initial={{ opacity: 0, y: 20 }} // Start: invisible and 20px down
-      animate={{ opacity: 1, y: 0 }} // End: fully visible at original position
-      transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
-    >
-      {/* Left Panel: Controls */}
-      <div className="w-full lg:w-1/4 xl:w-1/5 p-4 space-y-6 bg-white shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold text-center text-slate-900 border-b pb-2">
-          Controls
-        </h2>
-        <MenuSelectAlgorithm
-          algorithm={algorithm}
-          setAlgorithm={setAlgorithm}
-        />
-        <MenuSelectNodeSearch setNode={setNode} />
-      </div>
+    <>
+      <motion.div
+        className="lg:w-full w-86  flex flex-col lg:flex-row p-4 bg-slate-50 min-h-screen shadow-md rounded-lg backdrop-blur supports-[backdrop-filter]:bg-white/60 "
+        initial={{ opacity: 0, y: 20 }} // Start: invisible and 20px down
+        animate={{ opacity: 1, y: 0 }} // End: fully visible at original position
+        transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
+      >
+        {/* Left Panel: Controls */}
+        <div className="w-full lg:w-1/4 xl:w-1/5 p-4 space-y-6 bg-white shadow-lg rounded-lg">
+          <h2 className="text-2xl font-bold text-center text-slate-900 border-b pb-2">
+            Controls
+          </h2>
+          <MenuSelectAlgorithm
+            algorithm={algorithm}
+            setAlgorithm={setAlgorithm}
+          />
+          <MenuSelectNodeSearch setNode={setNode} />
+        </div>
 
-      {/* Right Panel: Visualization and Code */}
-      <div className="w-full xl:w-4/5 mt-4 lg:mt-0 lg:ml-4">
-        <CanvasSearching algorithm={algorithm} vertex={node} />
-        <CodeDisplay algorithm={algorithm} />
-      </div>
-    </motion.div>
+        {/* Right Panel: Visualization and Code */}
+        <div className="w-full xl:w-4/5 mt-4 lg:mt-0 lg:ml-4">
+          <CanvasSearching algorithm={algorithm} vertex={node} />
+          <CodeDisplay algorithm={algorithm} />
+        </div>
+      </motion.div>
+    </>
   )
 }

@@ -1,6 +1,6 @@
-// import React from 'react';
-// import Box from '@mui/material/Box';
-// import Slider from '@mui/material/Slider';
+import React from 'react';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 //
 // export default function SpeedSlider({ value, onChange, min = 0.5, max = 3, step = 0.1 }) {
 //   return (
@@ -18,10 +18,6 @@
 //     </Box>
 //   );
 // }
-
-import React from 'react'
-import Box from '@mui/material/Box'
-import Slider from '@mui/material/Slider'
 
 // Define the gradient
 const sliderGradient = 'linear-gradient(to right, #38bdf8, #818cf8)' // sky-400 to indigo-300
