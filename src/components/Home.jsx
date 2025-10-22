@@ -14,24 +14,28 @@ export const Home = () => {
           description="Bubble, Merge, Quick, Heap Sort, etc."
           color="bg-blue-100"
           link="/sort"
+          time={0.7}
         />
         <AlgoCard
           title="Searching Algorithms"
           description="BFS, DFS, Binary Search, Linear Search..."
           color="bg-green-100"
           link="/search"
+          time={0.8}
         />
         <AlgoCard
           title="Graph Algorithms"
           description="Dijkstra, Floyd-Warshall, Topological Sort..."
           color="bg-pink-100"
           link="/spath"
+          time={0.9}
         />
         <AlgoCard
           title="Dynamic Programming"
           description="Knapsack, LCS, Matrix Chain Multiplication..."
           color="bg-purple-100"
           link="/"
+          time={1}
         />
       </div>
     </div>
