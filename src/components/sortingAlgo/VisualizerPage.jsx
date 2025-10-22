@@ -5,7 +5,7 @@ export default function VisualizerPage() {
   const [algorithmType, setAlgorithmType] = useState('simple')
 
   return (
-    <div className="max-w-screen bg-slate-50 mx-auto min-h-screen shadow-md rounded-lg">
+    <div className="max-w-screen bg-slate-50 mx-auto min-h-screen shadow-md rounded-lg  ">
       <div className="flex justify-center p-4">
         <select
           value={algorithmType}

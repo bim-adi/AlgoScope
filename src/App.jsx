@@ -1,23 +1,34 @@
 import React, { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
+import { motion } from 'framer-motion'
 import { Home } from './components/Home'
 import SortingVisualizerPage from './components/sortingAlgo/VisualizerPage'
 import { VisualizerPage } from './components/searchAlgo/VisualizerPage'
 import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 
 function App() {
+  let luxurySunset = 'bg-gradient-to-br from-orange-500 to-purple-500'
+  let calmDawn = 'bg-gradient-to-br from-blue-200 via-white to-pink-200'
+  let roseIndigo = 'bg-gradient-to-br from-indigo-800 to-rose-500'
+  let forestGold = 'bg-gradient-to-br from-green-900 to-yellow-500'
+  let arcticRuby = 'bg-gradient-to-br from-sky-400 to-rose-700'
   const route = createBrowserRouter([
     {
       path: '/',
       element: (
         <>
-          <div className="flex flex-col md:flex-row bg-purple-100">
+          <motion.div
+            className={`flex flex-col md:flex-row' ${luxurySunset} max-h-screen transition-colors duration-700`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+          >
             <div className="flex flex-col gap-4 p-4 m-auto">
               <Navbar />
               <Home />
             </div>
-          </div>
+          </motion.div>
         </>
       ),
     },
@@ -25,7 +36,12 @@ function App() {
       path: '/search',
       element: (
         <>
-          <div className="flex flex-col md:flex-row bg-green-100">
+          <motion.div
+            className={`flex flex-col md:flex-row ${roseIndigo} transition-colors duration-700`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+          >
             {/* <CanvasSearching algorithm={algorithm} vertex={vertex} /> */}
             <div className="flex flex-col gap-4 p-4 m-auto">
               {/* <MenuSetAlgoSearch setAlgorithm={setAlgorithm} /> */}
@@ -33,7 +49,7 @@ function App() {
               <Navbar />
               <VisualizerPage />
             </div>
-          </div>
+          </motion.div>
         </>
       ),
     },
@@ -41,7 +57,12 @@ function App() {
       path: '/spath',
       element: (
         <>
-          <div className="flex flex-col md:flex-row bg-pink-100">
+          <motion.div
+            className={`flex flex-col md:flex-row ${forestGold} transition-colors duration-700`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+          >
             {/* <CanvasShortestPath */}
             {/*   algorithm={spAlgorithm} */}
             {/*   source={source} */}
@@ -56,7 +77,7 @@ function App() {
               <Navbar />
               <ShortestPathPage />
             </div>
-          </div>
+          </motion.div>
         </>
       ),
     },
@@ -64,11 +85,16 @@ function App() {
       path: '/about',
       element: (
         <>
-          <div className="flex flex-col md:flex-row bg-gray-100">
+          <motion.div
+            className="flex flex-col md:flex-row bg-gray-100"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+          >
             <div className="flex flex-col gap-4 p-4 m-auto">
               <Navbar />
             </div>
-          </div>
+          </motion.div>
         </>
       ),
     },
@@ -76,12 +102,16 @@ function App() {
       path: '/sort',
       element: (
         <>
-          <div className="flex flex-col md:flex-row bg-blue-100">
+          <motion.div
+            className={`flex flex-col md:flex-row ${arcticRuby} transition-colors duration-700 `}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <div className="flex flex-col m-auto gap-4 p-4">
               <Navbar />
               <SortingVisualizerPage />
             </div>
-          </div>
+          </motion.div>
         </>
       ),
     },
