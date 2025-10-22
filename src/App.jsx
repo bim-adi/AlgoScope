@@ -19,7 +19,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`flex flex-col md:flex-row' ${luxurySunset} max-h-screen transition-colors duration-700`}
+            className={`flex flex-col md:flex-row' ${luxurySunset} transition-colors duration-700 max-w-screen`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -37,7 +37,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`flex flex-col md:flex-row ${roseIndigo} transition-colors duration-700`}
+            className={`flex flex-col md:flex-row ${roseIndigo} transition-colors duration-700 overflow-hidden`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}

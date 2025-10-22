@@ -474,7 +474,7 @@ export default function Visualizer({ algorithmType }) {
             <h3 className="text-lg font-semibold text-slate-800 mb-2">Array</h3>
             <div
               id="container"
-              className="flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2"
+              className="flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2 max-w-full"
               style={{ background: '#DDDEAB' }}
             >
               {array.map((val, idx) => (

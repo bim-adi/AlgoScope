@@ -10,7 +10,7 @@ export const ShortestPathPage = () => {
   const [target, setTarget] = useState(null)
 
   return (
-    <div className="max-w-screen flex flex-col lg:flex-row p-4 bg-slate-50 min-h-screen">
+    <div className="lg:w-full w-86 flex flex-col lg:flex-row p-4 bg-slate-50 min-h-screen rounded-lg shadow-lg">
       {/* Left Panel: Controls */}
       <div className="w-full lg:w-1/4 xl:w-1/5 p-4 space-y-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold text-center text-slate-900 border-b pb-2">
