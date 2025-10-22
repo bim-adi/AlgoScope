@@ -98,7 +98,7 @@ export const Navbar = () => {
               ))}
             </ul>
             <Link
-              to="#get-started"
+              to="https://github.com/bim-adi/AlgoScope"
               className="inline-flex items-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Get Started
