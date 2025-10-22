@@ -9,7 +9,7 @@ import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 
 function App() {
   let luxurySunset = 'bg-gradient-to-br from-orange-500 to-purple-500'
-  let calmDawn = 'bg-gradient-to-br from-blue-200 via-white to-pink-200'
+  let calmDawn = 'bg-gradient-to-br from-rose-300 to-slate-400'
   let roseIndigo = 'bg-gradient-to-br from-indigo-800 to-rose-500'
   let forestGold = 'bg-gradient-to-br from-green-900 to-yellow-500'
   let arcticRuby = 'bg-gradient-to-br from-sky-400 to-rose-700'
@@ -86,13 +86,16 @@ function App() {
       element: (
         <>
           <motion.div
-            className="flex flex-col md:flex-row bg-gray-100"
+            className={`flex flex-col md:flex-row ${calmDawn}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
           >
             <div className="flex flex-col gap-4 p-4 m-auto">
               <Navbar />
+              <div
+                className={`max-w-screen max-w-screen min-h-screen min-h-screen`}
+              ></div>
             </div>
           </motion.div>
         </>
