@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import StatusDisplay from '../StatusDisplay'
 
 export const CanvasSearching = ({ algorithm, vertex }) => {
   const containerRef = useRef(null)
   const networkRef = useRef(null)
   const nodesRef = useRef(null)
   const edgesRef = useRef(null)
+  const [status, setStatus] = useState('select an algo to display progress...'); 
 
   // initialize network
   useEffect(() => {
@@ -78,7 +80,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           highlight: { background: '#8ABB6C', border: '#000000' },
         },
         font: {
-          size: 10,
+          size: 20,
           color: '#3E3F29',
           face: 'Arial',
           bold: true,
@@ -190,7 +192,8 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           color: { background: '#ff4136', border: '#000000' },
           size: 35,
         })
-
+        console.log(`node ${id} is visited.`);
+        setStatus(`node ${id} is visited.`);
         // Add pulsing effect
         setTimeout(() => {
           nodes.update({ id, size: 30 })
@@ -224,6 +227,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         let node = queue.shift()
         visit(node, delay)
         delay += 1200
+        // console.log(`${node} node has been visited.`)
         ;(adjacency[node] || []).forEach((n) => {
           // Animate edges to neighbors
           if (!visited.has(n)) {
@@ -297,6 +301,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
         }}
       />
+      <StatusDisplay message={status}/>
     </>
   )
 }

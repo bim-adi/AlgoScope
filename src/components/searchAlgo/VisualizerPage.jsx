@@ -3,6 +3,7 @@ import { CanvasSearching } from './CanvasSearching'
 import { CodeDisplay } from './CodeDisplay'
 import { MenuSelectNodeSearch } from './MenuSelectNodeSearch'
 import { MenuSelectAlgorithm } from './MenuSelectAlgorithm'
+import StatusDisplay from '../StatusDisplay'
 
 export const VisualizerPage = () => {
   const [node, setNode] = useState(null)
