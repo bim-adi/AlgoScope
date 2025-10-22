@@ -938,7 +938,7 @@ export const CodeDisplay = ({ algorithm }) => {
   const code = algorithm ? codeSnippets[algorithm]?.[language] : ''
 
   return (
-    <div className="mt-8 m-auto p-6 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl border border-slate-700 w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
+    <div className="m-auto p-6 rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl border border-slate-700 w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div className="flex flex-row gap-3">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
