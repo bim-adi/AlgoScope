@@ -28,8 +28,8 @@ function App() {
             <div className="flex-1 flex flex-col gap-4 p-4">
               <Navbar />
               <Home />
+              <Footer />
             </div>
-            <Footer />
           </motion.div>
         </>
       ),
