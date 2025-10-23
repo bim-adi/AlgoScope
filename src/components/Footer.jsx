@@ -5,7 +5,7 @@ import githubIcon from '../assets/github-mark-white.svg'
 const Footer = () => {
   return (
     <motion.footer
-      className="relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden rounded-xl"
+      className="h-auto relative border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 rounded-lg shadow-lg text-black overflow-hidden rounded-xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -25,14 +25,14 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center mr-3">
+              <div className="w-5 h-5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-3">
                 <img src={logo} alt="" />
               </div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-900 to-pink-900 bg-clip-text text-transparent">
                 AlgoScope
               </h3>
             </div>
-            <p className="text-gray-300 text-sm max-w-xs">
+            <p className="text-gray-800 text-sm max-w-xs">
               Visualize and understand algorithms with smooth, interactive
               animations.
             </p>
@@ -44,7 +44,7 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h4 className="text-lg font-semibold mb-3 text-purple-300">
+            <h4 className="text-lg font-semibold mb-3 text-purple-900">
               Explore
             </h4>
             <ul className="space-y-2 text-sm">
@@ -52,7 +52,7 @@ const Footer = () => {
                 <li key={i}>
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-purple-300 transition-colors duration-300"
+                    className="text-gray-800 hover:text-purple-800 transition-colors duration-300"
                   >
                     {link}
                   </a>
@@ -67,7 +67,7 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <h4 className="text-lg font-semibold mb-3 text-purple-300">
+            <h4 className="text-lg font-semibold mb-3 text-purple-900">
               Connect
             </h4>
             <div className="flex space-x-4">
@@ -75,7 +75,7 @@ const Footer = () => {
                 <motion.a
                   key={platform}
                   href="https://github.com/bim-adi/AlgoScope.git"
-                  className="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
+                  className="w-9 h-9 bg-white/30 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
                   whileHover={{ scale: 1.1 }}
                   transition={{ delay: 0.1 * i }}
                 >
@@ -93,7 +93,7 @@ const Footer = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <div className="container mx-auto px-6 py-4 text-center text-sm text-gray-400">
+          <div className="container mx-auto px-6 py-4 text-center text-sm text-gray-900">
             © 2025 AlgoScope — Made with ❤️ for learners by bimbok & aditya.
           </div>
         </motion.div>

@@ -107,7 +107,7 @@ export const Navbar = () => {
                 alt="github"
                 className="w-7 h-5 hover:text-gray-400 pr-2"
               />
-              <span className='p-1'>Github</span>
+              <span className="p-1">Github</span>
             </Link>
           </div>
 
