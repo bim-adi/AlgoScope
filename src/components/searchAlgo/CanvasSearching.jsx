@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import StatusDisplay from '../StatusDisplay'
 
-export const CanvasSearching = ({ algorithm, vertex }) => {
+export const CanvasSearching = ({ algorithm, vertex, speed = 1 }) => {
   const containerRef = useRef(null)
   const networkRef = useRef(null)
   const nodesRef = useRef(null)
@@ -196,7 +196,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         // Add pulsing effect
         setTimeout(() => {
           nodes.update({ id, size: 30 })
-        }, 200)
+        }, 200 / speed)
       }, delay)
       timers.push(t)
     }
@@ -230,7 +230,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
       let delay = 0
 
       setStatusAtDelay(`Starting BFS from node ${vertex}`, delay)
-      delay += 1200
+      delay += 1200 / speed
 
       while (queue.length) {
         let node = queue.shift()
@@ -239,13 +239,13 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           `Visiting node ${node}. Queue: [${queue.join(', ')}]`,
           delay,
         )
-        delay += 1200
+        delay += 1200 / speed
 
         const neighbors = adjacency[node] || []
         if (neighbors.length > 0) {
           setStatusAtDelay(
             `Exploring neighbors of ${node}: ${neighbors.join(', ')}`,
-            delay - 600,
+            delay - 600 / speed,
           )
         }
 
@@ -266,14 +266,14 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
                   color: { color: '#8ABB6C' },
                   width: 5,
                 })
-              }, delay - 200)
+              }, delay - 200 / speed)
             }
           }
         })
       }
 
-      markCompleted(delay + 500)
-      setStatusAtDelay('BFS complete!', delay + 500)
+      markCompleted(delay + 500 / speed)
+      setStatusAtDelay('BFS complete!', delay + 500 / speed)
     }
 
     if (algorithm === 'dfs') {
@@ -285,13 +285,13 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         visited.add(node)
         visit(node, delay)
         setStatusAtDelay(`Visiting node ${node}`, delay)
-        delay += 1200
+        delay += 1200 / speed
 
         const neighbors = adjacency[node] || []
         if (neighbors.length > 0) {
           setStatusAtDelay(
             `Exploring neighbors of node ${node}: ${neighbors.join(', ')}`,
-            delay - 600,
+            delay - 600 / speed,
           )
         }
 
@@ -307,11 +307,11 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
                   color: { color: '#8ABB6C' },
                   width: 5,
                 })
-              }, delay - 200)
+              }, delay - 200 / speed)
             }
             dfs(n)
             setStatusAtDelay(`Backtracking from ${n} to node ${node}`, delay)
-            delay += 500
+            delay += 500 / speed
           }
         }
 
@@ -320,29 +320,29 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
             `Node ${node} has no unvisited neighbors. Backtracking.`,
             delay,
           )
-          delay += 500
+          delay += 500 / speed
         } else {
           setStatusAtDelay(
             `Finished exploring neighbors of ${node}. Backtracking.`,
             delay,
           )
-          delay += 500
+          delay += 500 / speed
         }
       }
 
       setStatusAtDelay(`Starting DFS from node ${vertex}`, 0)
-      delay += 500
+      delay += 500 / speed
 
       dfs(parseInt(vertex))
 
-      markCompleted(delay + 500)
-      setStatusAtDelay('DFS complete!', delay + 500)
+      markCompleted(delay + 500 / speed)
+      setStatusAtDelay('DFS complete!', delay + 500 / speed)
     }
 
     return () => {
       timers.forEach(clearTimeout)
     }
-  }, [algorithm, vertex])
+  }, [algorithm, vertex, speed])
 
   return (
     <>

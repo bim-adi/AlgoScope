@@ -6,10 +6,16 @@ import { MenuSelectAlgorithm } from './MenuSelectAlgorithm'
 import StatusDisplay from '../StatusDisplay'
 import { motion } from 'framer-motion'
 import Footer from '../Footer'
+import SpeedSlider from '../SpeedSlider'
 
 export const VisualizerPage = () => {
   const [node, setNode] = useState(null)
   const [algorithm, setAlgorithm] = useState(null)
+  const [speed, setSpeed] = useState(1.0)
+
+  const handleSpeedChange = (event, newValue) => {
+    setSpeed(newValue)
+  }
 
   const handleStart = () => {
     if (!algorithm || !node) {
@@ -39,11 +45,12 @@ export const VisualizerPage = () => {
             setAlgorithm={setAlgorithm}
           />
           <MenuSelectNodeSearch setNode={setNode} />
+          <SpeedSlider value={speed} onChange={handleSpeedChange} />
         </div>
 
         {/* Right Panel: Visualization and Code */}
         <div className="w-full xl:w-4/5 mt-4 lg:mt-0 lg:ml-4">
-          <CanvasSearching algorithm={algorithm} vertex={node} />
+          <CanvasSearching algorithm={algorithm} vertex={node} speed={speed} />
           <CodeDisplay algorithm={algorithm} />
         </div>
       </motion.div>
