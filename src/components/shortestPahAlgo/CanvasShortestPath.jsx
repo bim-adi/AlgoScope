@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import StatusDisplay from '../StatusDisplay'
 
-export const CanvasShortestPath = ({ algorithm, source, target }) => {
+export const CanvasShortestPath = ({
+  algorithm,
+  source,
+  target,
+  speed = 1,
+}) => {
   const containerRef = useRef(null)
   const networkRef = useRef(null)
   const nodesRef = useRef(null)
@@ -187,7 +192,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         // Add pulsing effect
         setTimeout(() => {
           nodes.update({ id, size: 30 })
-        }, 300)
+        }, 300 / speed)
       }, delay)
       timers.push(t)
     }
@@ -204,7 +209,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         // Add pulsing effect
         setTimeout(() => {
           edges.update({ id: edgeId, width: 5 })
-        }, 200)
+        }, 200 / speed)
       }, delay)
       timers.push(t)
     }
@@ -234,32 +239,35 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
       // Animate path nodes with staggered timing
       pathNodes.forEach((n, index) => {
         visitLaterNode(n, delay)
-        delay += 800
+        delay += 800 / speed
 
         // Add connection line animation
         if (index < pathEdges.length) {
-          visitLaterEdge(pathEdges[index], delay - 200)
+          visitLaterEdge(pathEdges[index], delay - 200 / speed)
         }
       })
 
       // Final completion animation
-      setTimeout(() => {
-        pathNodes.forEach((n) => {
-          nodes.update({
-            id: n,
-            color: { background: '#8ABB6C', border: '#000000' },
-            size: 28,
+      setTimeout(
+        () => {
+          pathNodes.forEach((n) => {
+            nodes.update({
+              id: n,
+              color: { background: '#8ABB6C', border: '#000000' },
+              size: 28,
+            })
           })
-        })
-        pathEdges.forEach((eId) => {
-          edges.update({
-            id: eId,
-            color: { color: '#8ABB6C' },
-            width: 5,
+          pathEdges.forEach((eId) => {
+            edges.update({
+              id: eId,
+              color: { color: '#8ABB6C' },
+              width: 5,
+            })
           })
-        })
-        setStatus(`Path found from ${src} to ${dst}.`)
-      }, delay + 500)
+          setStatus(`Path found from ${src} to ${dst}.`)
+        },
+        delay + 500 / speed
+      )
     }
 
     const runDijkstra = () => {
@@ -383,7 +391,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
     return () => {
       timers.forEach(clearTimeout)
     }
-  }, [algorithm, source, target])
+  }, [algorithm, source, target, speed])
 
   return (
     <>
@@ -394,7 +402,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
         style={{
           background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
         }}
-      />
+      />{' '}
       <StatusDisplay message={status} />
     </>
   )

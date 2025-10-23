@@ -4,11 +4,17 @@ import { CodeDisplayShortestPath } from './CodeDisplayShortestPath'
 import { MenuSelectNodesShortestPath } from './MenuSelectNodesShortestPath'
 import { MenuSetAlgoShortestPath } from './MenuSetAlgoShortestPath'
 import { motion } from 'framer-motion'
+import SpeedSlider from '../SpeedSlider'
 
 export const ShortestPathPage = () => {
   const [algorithm, setAlgorithm] = useState(null)
   const [source, setSource] = useState(null)
   const [target, setTarget] = useState(null)
+  const [speed, setSpeed] = useState(1.0)
+
+  const handleSpeedChange = (event, newValue) => {
+    setSpeed(newValue)
+  }
 
   return (
     <motion.div
@@ -27,6 +33,9 @@ export const ShortestPathPage = () => {
           setSource={setSource}
           setTarget={setTarget}
         />
+        <div className="m-auto w-full">
+          <SpeedSlider value={speed} onChange={handleSpeedChange} />
+        </div>
       </div>
 
       {/* Right Panel: Visualization and Code */}
@@ -35,6 +44,7 @@ export const ShortestPathPage = () => {
           algorithm={algorithm}
           source={source}
           target={target}
+          speed={speed}
         />
         <CodeDisplayShortestPath algorithm={algorithm} />
       </div>

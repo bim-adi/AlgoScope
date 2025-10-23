@@ -1,6 +1,6 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import React from 'react'
+import Box from '@mui/material/Box'
+import Slider from '@mui/material/Slider'
 //
 // export default function SpeedSlider({ value, onChange, min = 0.5, max = 3, step = 0.1 }) {
 //   return (
@@ -32,7 +32,6 @@ export default function SpeedSlider({
   return (
     <Box
       sx={{
-        width: 300,
         // 1. "Glassmorphism" container
         background: 'rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(10px)',
