@@ -5,7 +5,7 @@ import githubIcon from '../assets/github-mark-white.svg'
 const Footer = () => {
   return (
     <motion.footer
-      className="h-auto relative border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 rounded-lg shadow-lg text-black overflow-hidden rounded-xl"
+      className="relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden rounded-xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}

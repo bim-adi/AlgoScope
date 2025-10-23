@@ -241,11 +241,11 @@ export const Navbar = () => {
               </ul>
               <motion.div variants={menuItemVariants}>
                 <Link
-                  to="#get-started"
+                  to="https://github.com/bim-adi/AlgoScope"
                   onClick={() => setOpen(false)}
                   className="mt-3 block text-center rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
                 >
-                  Get Started
+                  Github
                 </Link>
               </motion.div>
             </div>
