@@ -31,4 +31,3 @@ export default function AlgoCard({
     </motion.div>
   )
 }
-
