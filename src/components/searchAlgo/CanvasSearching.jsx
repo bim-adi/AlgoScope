@@ -174,7 +174,7 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         id: n.id,
         color: { background: '#cccccc', border: '#000000' },
         size: 25,
-      })
+      }),
     )
 
     const adjacency = {}
@@ -193,11 +193,17 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
           size: 35,
         })
         console.log(`node ${id} is visited.`)
-        setStatus(`node ${id} is visited.`)
         // Add pulsing effect
         setTimeout(() => {
           nodes.update({ id, size: 30 })
         }, 200)
+      }, delay)
+      timers.push(t)
+    }
+
+    const setStatusAtDelay = (message, delay) => {
+      const t = setTimeout(() => {
+        setStatus(message)
       }, delay)
       timers.push(t)
     }
@@ -223,18 +229,35 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
       let visited = new Set([parseInt(vertex)])
       let delay = 0
 
+      setStatusAtDelay(`Starting BFS from node ${vertex}`, delay)
+      delay += 1200
+
       while (queue.length) {
         let node = queue.shift()
         visit(node, delay)
+        setStatusAtDelay(
+          `Visiting node ${node}. Queue: [${queue.join(', ')}]`,
+          delay,
+        )
         delay += 1200
-        // console.log(`${node} node has been visited.`)
-        ;(adjacency[node] || []).forEach((n) => {
-          // Animate edges to neighbors
+
+        const neighbors = adjacency[node] || []
+        if (neighbors.length > 0) {
+          setStatusAtDelay(
+            `Exploring neighbors of ${node}: ${neighbors.join(', ')}`,
+            delay - 600,
+          )
+        }
+
+        neighbors.forEach((n) => {
           if (!visited.has(n)) {
             visited.add(n)
             queue.push(n)
+            setStatusAtDelay(
+              `Adding ${n} to queue. Queue: [${queue.join(', ')}]`,
+              delay,
+            )
 
-            // Highlight edge
             const edge = edges.get().find((e) => e.from === node && e.to === n)
             if (edge) {
               setTimeout(() => {
@@ -249,8 +272,8 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         })
       }
 
-      // Mark completion
       markCompleted(delay + 500)
+      setStatusAtDelay('BFS complete!', delay + 500)
     }
 
     if (algorithm === 'dfs') {
@@ -261,10 +284,21 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
         if (visited.has(node)) return
         visited.add(node)
         visit(node, delay)
+        setStatusAtDelay(`Visiting node ${node}`, delay)
         delay += 1200
-        // Animate edges to neighbors
-        ;(adjacency[node] || []).forEach((n) => {
+
+        const neighbors = adjacency[node] || []
+        if (neighbors.length > 0) {
+          setStatusAtDelay(
+            `Exploring neighbors of node ${node}: ${neighbors.join(', ')}`,
+            delay - 600,
+          )
+        }
+
+        let hasUnvisitedNeighbors = false
+        for (const n of neighbors) {
           if (!visited.has(n)) {
+            hasUnvisitedNeighbors = true
             const edge = edges.get().find((e) => e.from === node && e.to === n)
             if (edge) {
               setTimeout(() => {
@@ -276,14 +310,33 @@ export const CanvasSearching = ({ algorithm, vertex }) => {
               }, delay - 200)
             }
             dfs(n)
+            setStatusAtDelay(`Backtracking from ${n} to node ${node}`, delay)
+            delay += 500
           }
-        })
+        }
+
+        if (!hasUnvisitedNeighbors) {
+          setStatusAtDelay(
+            `Node ${node} has no unvisited neighbors. Backtracking.`,
+            delay,
+          )
+          delay += 500
+        } else {
+          setStatusAtDelay(
+            `Finished exploring neighbors of ${node}. Backtracking.`,
+            delay,
+          )
+          delay += 500
+        }
       }
+
+      setStatusAtDelay(`Starting DFS from node ${vertex}`, 0)
+      delay += 500
 
       dfs(parseInt(vertex))
 
-      // Mark completion
       markCompleted(delay + 500)
+      setStatusAtDelay('DFS complete!', delay + 500)
     }
 
     return () => {

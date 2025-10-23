@@ -1,10 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import StatusDisplay from '../StatusDisplay'
 
 export const CanvasShortestPath = ({ algorithm, source, target }) => {
   const containerRef = useRef(null)
   const networkRef = useRef(null)
   const nodesRef = useRef(null)
   const edgesRef = useRef(null)
+  const [status, setStatus] = useState(
+    'Select an algorithm, a source, and a target node.'
+  )
 
   // initialize network
   useEffect(() => {
@@ -138,14 +142,14 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
     })
   }
 
-  useEffect(() => {
-    // reset on inputs change
-    resetStyles()
-  }, [algorithm, source, target])
-
   // Run and animate shortest path with enhanced visual effects
   useEffect(() => {
-    if (!algorithm || !source || !target) return
+    resetStyles()
+    if (!algorithm || !source || !target) {
+      setStatus('Select an algorithm, a source, and a target node.')
+      return
+    }
+
     if (!nodesRef.current || !edgesRef.current) return
 
     const nodes = nodesRef.current
@@ -209,7 +213,10 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
       const pathNodes = []
       const pathEdges = []
       let cur = dst
-      if (parent[cur] == null) return // unreachable
+      if (parent[cur] == null) {
+        setStatus(`Node ${dst} is not reachable from ${src}.`)
+        return // unreachable
+      }
       while (cur != null && cur !== src) {
         const prev = parent[cur]
         if (prev == null) break
@@ -251,10 +258,12 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
             width: 5,
           })
         })
+        setStatus(`Path found from ${src} to ${dst}.`)
       }, delay + 500)
     }
 
     const runDijkstra = () => {
+      setStatus(`Running Dijkstra's algorithm from ${src} to ${dst}...`)
       const dist = {}
       const parent = {}
       const used = new Set()
@@ -287,6 +296,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
     }
 
     const runBellmanFord = () => {
+      setStatus(`Running Bellman-Ford algorithm from ${src} to ${dst}...`)
       const dist = {}
       const parent = {}
       nodeIds.forEach((id) => {
@@ -315,6 +325,7 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
     }
 
     const runFloydWarshall = () => {
+      setStatus(`Running Floyd-Warshall algorithm...`)
       const n = nodeIds.length
       const idxOf = new Map(nodeIds.map((id, i) => [id, i]))
       const dist = Array.from({ length: n }, () => Array(n).fill(Infinity))
@@ -375,14 +386,17 @@ export const CanvasShortestPath = ({ algorithm, source, target }) => {
   }, [algorithm, source, target])
 
   return (
-    <div
-      id="cy-sp"
-      ref={containerRef}
-      className="h-[600px] m-auto rounded-lg border-2 border-stone-500 shadow-lg w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto"
-      style={{
-        background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
-      }}
-    />
+    <>
+      <div
+        id="cy-sp"
+        ref={containerRef}
+        className="h-[600px] m-auto rounded-lg border-2 border-stone-500 shadow-lg w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto"
+        style={{
+          background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
+        }}
+      />
+      <StatusDisplay message={status} />
+    </>
   )
 }
 
