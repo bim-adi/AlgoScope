@@ -5,7 +5,8 @@ import githubIcon from '../assets/github-mark-white.svg'
 const Footer = () => {
   return (
     <motion.footer
-      className="relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden rounded-xl"
+    className="relative bg-gradient-to-r from-cyan-100 via-blue-100 to-indigo-100 text-gray-700 overflow-hidden rounded-xl m-3"
+
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -25,14 +26,14 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center mb-4">
-              <div className="w-5 h-5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-3">
+              <div className="w-7 h-7 bg-gradient-to-br from-purple-200 to-pink-300 rounded flex items-center justify-center mr-3">
                 <img src={logo} alt="" />
               </div>
               <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-900 to-pink-900 bg-clip-text text-transparent">
                 AlgoScope
               </h3>
             </div>
-            <p className="text-gray-800 text-sm max-w-xs">
+            <p className="text-gray-900 text-sm max-w-xs">
               Visualize and understand algorithms with smooth, interactive
               animations.
             </p>
@@ -52,7 +53,7 @@ const Footer = () => {
                 <li key={i}>
                   <a
                     href="#"
-                    className="text-gray-800 hover:text-purple-800 transition-colors duration-300"
+                    className="text-gray-900 hover:text-purple-800 transition-colors duration-300"
                   >
                     {link}
                   </a>
@@ -75,7 +76,7 @@ const Footer = () => {
                 <motion.a
                   key={platform}
                   href="https://github.com/bim-adi/AlgoScope.git"
-                  className="w-9 h-9 bg-white/30 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
+                  className="w-9 h-9 bg-black/80 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
                   whileHover={{ scale: 1.1 }}
                   transition={{ delay: 0.1 * i }}
                 >
