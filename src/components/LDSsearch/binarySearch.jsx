@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-const LinearSearch = () => {
+const BinarySearch = () => {
   const [array, setArray] = useState([
     50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101,
   ])
@@ -25,35 +25,12 @@ const LinearSearch = () => {
     alert('❌ Element not found!')
   }
 
-  const linearSearch = async () => {
+  const binarySearch = async () => {
     setIsSearching(true)
     let arr = [...array]
     let foundIndex = -1
     const numericTarget = parseInt(target, 10)
 
-    if (isNaN(numericTarget)) {
-      alert('Please enter a valid number to search.')
-      setIsSearching(false)
-      return
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      highlight(i)
-      await sleep(400)
-
-      if (arr[i] === numericTarget) {
-        foundIndex = i
-        markFound(i)
-        await sleep(800)
-        break
-      }
-
-      dehighlight(i)
-    }
-
-    if (foundIndex === -1) markNotFound()
-
-    setIsSearching(false)
     return foundIndex
   }
 

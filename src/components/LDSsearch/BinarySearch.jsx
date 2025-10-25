@@ -1,33 +1,51 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
-const LinearSearch = () => {
+const BinarySearch = () => {
   const [array, setArray] = useState([
-    50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101,
+    17, 30, 37, 45, 50, 72, 88, 90, 99, 101, 120, 160, 203,
   ])
-  const [target, setTarget] = useState(30)
+  const [target, setTarget] = useState(37)
   const [isSearching, setIsSearching] = useState(false)
   const eleRef = useRef([])
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-  const highlight = (i) => {
-    if (eleRef.current[i]) eleRef.current[i].classList.add('active')
+  useEffect(() => {
+    eleRef.current = eleRef.current.slice(0, array.length)
+  }, [array])
+
+  const highlight = (i, className) => {
+    if (eleRef.current[i]) eleRef.current[i].classList.add(className)
   }
 
-  const dehighlight = (i) => {
-    if (eleRef.current[i]) eleRef.current[i].classList.remove('active')
+  const dehighlight = (i, className) => {
+    if (eleRef.current[i]) eleRef.current[i].classList.remove(className)
+  }
+
+  const dehighlightAll = () => {
+    for (let i = 0; i < array.length; i++) {
+      if (eleRef.current[i]) {
+        eleRef.current[i].classList.remove('active', 'left', 'right', 'found')
+      }
+    }
   }
 
   const markFound = (i) => {
-    if (eleRef.current[i]) eleRef.current[i].classList.add('found')
+    if (eleRef.current[i]) {
+      eleRef.current[i].classList.remove('active', 'left', 'right')
+      eleRef.current[i].classList.add('found')
+    }
   }
 
   const markNotFound = () => {
     alert('❌ Element not found!')
   }
 
-  const linearSearch = async () => {
+  const binarySearch = async () => {
     setIsSearching(true)
+    dehighlightAll()
     let arr = [...array]
+    let left = 0
+    let right = arr.length - 1
     let foundIndex = -1
     const numericTarget = parseInt(target, 10)
 
@@ -37,30 +55,44 @@ const LinearSearch = () => {
       return
     }
 
-    for (let i = 0; i < arr.length; i++) {
-      highlight(i)
-      await sleep(400)
-
-      if (arr[i] === numericTarget) {
-        foundIndex = i
-        markFound(i)
-        await sleep(800)
-        break
+    while (left <= right) {
+      for (let i = 0; i < arr.length; i++) {
+        dehighlight(i, 'left')
+        dehighlight(i, 'right')
+        dehighlight(i, 'active')
       }
+      highlight(left, 'left')
+      highlight(right, 'right')
 
-      dehighlight(i)
+      let mid = Math.floor((left + right) / 2)
+      highlight(mid, 'active')
+      await sleep(1200)
+
+      if (arr[mid] === numericTarget) {
+        foundIndex = mid
+        markFound(mid)
+        await sleep(1000)
+        break
+      } else if (arr[mid] < numericTarget) {
+        left = mid + 1
+      } else {
+        right = mid - 1
+      }
     }
 
-    if (foundIndex === -1) markNotFound()
+    if (foundIndex === -1) {
+      markNotFound()
+    }
 
+    await sleep(1000)
+    dehighlightAll()
     setIsSearching(false)
-    return foundIndex
   }
 
   return (
     <div className="p-6 flex flex-col items-center bg-gradient-to-b from-white to-[#f9fafb] min-h-screen">
       <h1 className="text-2xl font-semibold text-gray-700 mb-6 tracking-wide">
-        🌸 Linear Search Visualizer
+        🌸 Binary Search Visualizer
       </h1>
 
       <div className="flex space-x-3 mb-8">
@@ -84,7 +116,7 @@ const LinearSearch = () => {
         />
         <button
           disabled={isSearching}
-          onClick={linearSearch}
+          onClick={binarySearch}
           className={`px-6 py-3 rounded-xl font-medium text-white shadow-md transition-all duration-300 ${
             isSearching
               ? 'bg-gray-400 cursor-not-allowed'
@@ -97,12 +129,23 @@ const LinearSearch = () => {
       <style>{`
         .array-ele {
           transform: scale(1);
+          transition: all 0.3s ease-in-out;
         }
 
-        .array-ele.active {
+        .array-ele.active { /* mid */
           background-color: #fff8e1 !important; /* soft yellow */
           border-color: #f6c453 !important;
           transform: scale(1.15);
+        }
+        
+        .array-ele.left {
+            background-color: #e0f2fe !important; /* soft blue */
+            border-color: #7dd3fc !important;
+        }
+        
+        .array-ele.right {
+            background-color: #fee2e2 !important; /* soft red */
+            border-color: #fca5a5 !important;
         }
 
         .array-ele.found {
@@ -116,4 +159,4 @@ const LinearSearch = () => {
   )
 }
 
-export default LinearSearch
+export default BinarySearch
