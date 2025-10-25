@@ -7,6 +7,7 @@ import SortingVisualizerPage from './components/sortingAlgo/VisualizerPage'
 import { VisualizerPage } from './components/searchAlgo/VisualizerPage'
 import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 import Footer from './components/Footer'
+import LDSSearchingVisualizerPage from './components/LDSsearch/VisualizerPage'
 
 function App() {
   let luxurySunset = 'bg-gradient-to-br from-orange-500 to-purple-500'
@@ -66,17 +67,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
           >
-            {/* <CanvasShortestPath */}
-            {/*   algorithm={spAlgorithm} */}
-            {/*   source={source} */}
-            {/*   target={target} */}
-            {/* /> */}
             <div className="flex-1 flex flex-col gap-4 p-4">
-              {/* <MenuSetAlgoShortestPath setAlgorithm={setSpAlgorithm} /> */}
-              {/* <MenuSelectNodesShortestPath */}
-              {/*   setSource={setSource} */}
-              {/*   setTarget={setTarget} */}
-              {/* /> */}
               <Navbar />
               <ShortestPathPage />
               <Footer />
@@ -168,6 +159,24 @@ function App() {
             <div className="flex-1 flex flex-col gap-4 p-4">
               <Navbar />
               <SortingVisualizerPage />
+              <Footer />
+            </div>
+          </motion.div>
+        </>
+      ),
+    },
+    {
+      path: '/ldssearch',
+      element: (
+        <>
+          <motion.div
+            className={`min-h-screen flex flex-col ${arcticRuby} transition-colors duration-700`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex-1 flex flex-col gap-4 p-4">
+              <Navbar />
+              <LDSSearchingVisualizerPage />
               <Footer />
             </div>
           </motion.div>
