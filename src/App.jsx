@@ -88,11 +88,11 @@ function App() {
           >
             <div className="flex-1 flex flex-col gap-4 p-4">
               <Navbar />
-              <div className="max-w-4xl mx-auto p-6">
-                <h1 className="text-3xl font-bold mb-6 text-gray-800">
+              <div className="max-w-4xl mx-auto p-6 bg-slate-800 rounded-2xl">
+                <h1 className="text-3xl font-bold mb-6 text-gray-50 ">
                   About AlgoScope
                 </h1>
-                <div className="prose prose-lg text-gray-700">
+                <div className="prose prose-lg text-gray-50">
                   <p className="mb-4">
                     AlgoScope is an interactive web application built to help
                     learners visualize algorithms in an intuitive and engaging
@@ -115,7 +115,7 @@ function App() {
                     educators.
                   </p>
 
-                  <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-50">
                     ✨ Features
                   </h2>
                   <ul className="list-disc list-inside mb-6 space-y-2">
@@ -130,7 +130,7 @@ function App() {
                     </li>
                   </ul>
 
-                  <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-50">
                     👩‍💻 Our Vision
                   </h2>
                   <p>

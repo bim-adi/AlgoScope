@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 
 const LinearSearch = () => {
   const [array, setArray] = useState([
-    50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101,
+    50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101, 93, 63
   ])
   const [target, setTarget] = useState(30)
   const [isSearching, setIsSearching] = useState(false)
