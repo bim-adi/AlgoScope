@@ -7,7 +7,7 @@ import SortingVisualizerPage from './components/sortingAlgo/VisualizerPage'
 import { VisualizerPage } from './components/searchAlgo/VisualizerPage'
 import { ShortestPathPage } from './components/shortestPahAlgo/ShortestPathPage'
 import Footer from './components/Footer'
-import LDSSearchingVisualizerPage from './components/LDSsearch/VisualizerPage'
+import ArrayVisualizerPage from './components/arraySsearch/VisualizerPage'
 
 function App() {
   let luxurySunset = 'bg-gradient-to-br from-orange-500 to-purple-500'
@@ -176,7 +176,7 @@ function App() {
           >
             <div className="flex-1 flex flex-col gap-4 p-4">
               <Navbar />
-              <LDSSearchingVisualizerPage />
+              <ArrayVisualizerPage />
               <Footer />
             </div>
           </motion.div>

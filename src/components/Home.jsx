@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ShortestPathPage } from './shortestPahAlgo/ShortestPathPage'
 import AlgoCard from './AlgoCard'
-import LinearSearch from './LDSsearch/LinearSearch'
 
 export const Home = () => {
   return (
@@ -32,7 +31,7 @@ export const Home = () => {
           time={0.9}
         />
         <AlgoCard
-          title="Linear DS Searching"
+          title="Array Searching"
           description="Linear Search, Binary Search..."
           color="bg-purple-100"
           link="/ldssearch"

@@ -57,9 +57,10 @@ const BinarySearch = () => {
 
     while (left <= right) {
       for (let i = 0; i < arr.length; i++) {
-        dehighlight(i, 'left')
-        dehighlight(i, 'right')
-        dehighlight(i, 'active')
+        if(i < left || i > right) {
+            dehighlight(i, 'left')
+            dehighlight(i, 'right')
+        }
       }
       highlight(left, 'left')
       highlight(right, 'right')
@@ -78,6 +79,7 @@ const BinarySearch = () => {
       } else {
         right = mid - 1
       }
+      dehighlight(mid, 'active')
     }
 
     if (foundIndex === -1) {
@@ -90,17 +92,17 @@ const BinarySearch = () => {
   }
 
   return (
-    <div className="p-6 flex flex-col items-center bg-gradient-to-b from-white to-[#f9fafb] min-h-screen">
-      <h1 className="text-2xl font-semibold text-gray-700 mb-6 tracking-wide">
-        🌸 Binary Search Visualizer
+    <div className="p-6 flex flex-col items-center rounded-lg bg-slate-800/50 border border-slate-700 shadow-xl mb-8">
+      <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6 tracking-wide">
+        Binary Search Visualizer
       </h1>
 
-      <div className="flex space-x-3 mb-8">
+      <div className="flex flex-wrap justify-center gap-3 mb-8">
         {array.map((item, idx) => (
           <span
             key={idx}
             ref={(el) => (eleRef.current[idx] = el)}
-            className="array-ele rounded-xl shadow-md border border-gray-200 px-5 py-3 text-lg font-semibold text-gray-700 bg-white transition-all duration-500"
+            className="array-ele rounded-lg shadow-md border border-slate-600 px-4 py-2 text-lg font-semibold text-slate-100 bg-slate-700 transition-all duration-300"
           >
             {item}
           </span>
@@ -111,19 +113,19 @@ const BinarySearch = () => {
           type="number"
           value={target}
           onChange={(e) => setTarget(e.target.value)}
-          className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter a number"
         />
         <button
           disabled={isSearching}
           onClick={binarySearch}
-          className={`px-6 py-3 rounded-xl font-medium text-white shadow-md transition-all duration-300 ${
+          className={`px-6 py-2 rounded-lg font-medium text-white shadow-md transition-all duration-300 ${
             isSearching
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-blue-400 hover:bg-blue-500'
+              ? 'bg-slate-600 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-700'
           }`}
         >
-          {isSearching ? 'Searching...' : `Start Search`}
+          {isSearching ? 'Searching...' : 'Start Search'}
         </button>
       </div>
       <style>{`
@@ -133,26 +135,27 @@ const BinarySearch = () => {
         }
 
         .array-ele.active { /* mid */
-          background-color: #fff8e1 !important; /* soft yellow */
-          border-color: #f6c453 !important;
-          transform: scale(1.15);
+          background-color: #facc15 !important; /* yellow-400 */
+          border-color: #fde047 !important; /* yellow-300 */
+          color: #1e293b !important; /* slate-800 */
+          transform: scale(1.1);
         }
         
         .array-ele.left {
-            background-color: #e0f2fe !important; /* soft blue */
-            border-color: #7dd3fc !important;
+            background-color: #60a5fa !important; /* blue-400 */
+            border-color: #93c5fd !important; /* blue-300 */
         }
         
         .array-ele.right {
-            background-color: #fee2e2 !important; /* soft red */
-            border-color: #fca5a5 !important;
+            background-color: #f87171 !important; /* red-400 */
+            border-color: #fca5a5 !important; /* red-300 */
         }
 
         .array-ele.found {
-          background-color: #b5e48c !important; /* soft green */
-          border-color: #76c893 !important;
-          transform: scale(1.2);
-          color: #1b4332;
+          background-color: #4ade80 !important; /* green-400 */
+          border-color: #86efac !important; /* green-300 */
+          color: #1e293b !important; /* slate-800 */
+          transform: scale(1.15);
         }
       `}</style>
     </div>

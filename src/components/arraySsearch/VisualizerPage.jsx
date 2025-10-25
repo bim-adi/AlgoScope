@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import LinearSearch from './LinearSearch'
 import BinarySearch from './BinarySearch'
 import { CodeDisplay } from './CodeDisplay'
+import { motion } from 'framer-motion'
 
-const VisualizerPage = () => {
+const ArrayVisualizerPage = () => {
   const [algorithm, setAlgorithm] = useState('linearSearch')
 
   const handleAlgorithmChange = (e) => {
@@ -11,8 +12,13 @@ const VisualizerPage = () => {
   }
 
   return (
-    <>
-      <div className="p-4 flex justify-center">
+    <motion.div
+      className="bg-slate-900 text-white p-4 md:p-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="flex justify-center mb-8">
         <select
           value={algorithm}
           onChange={handleAlgorithmChange}
@@ -25,10 +31,10 @@ const VisualizerPage = () => {
 
       {algorithm === 'linearSearch' && <LinearSearch />}
       {algorithm === 'binarySearch' && <BinarySearch />}
-
+      
       <CodeDisplay algorithm={algorithm} />
-    </>
+    </motion.div>
   )
 }
 
-export default VisualizerPage
+export default ArrayVisualizerPage
