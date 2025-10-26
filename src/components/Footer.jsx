@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import logo from '../assets/logo2.png'
 import githubIcon from '../assets/github-mark-white.svg'
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <motion.footer
@@ -67,21 +68,35 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <h4 className="text-lg font-semibold mb-3 text-purple-900">
-              Connect
-            </h4>
-            <div className="flex space-x-4">
-              {['GitHub'].map((platform, i) => (
-                <motion.a
-                  key={platform}
-                  href="https://github.com/bim-adi/AlgoScope.git"
-                  className="w-9 h-9 bg-black/80 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ delay: 0.1 * i }}
+              <h4 className="text-lg font-semibold mb-3 text-purple-900">
+                Connect
+              </h4>
+              <div className="flex flex-col space-x-4">
+                {['GitHub'].map((platform, i) => (
+                  <motion.a
+                    key={platform}
+                    href="https://github.com/bim-adi/AlgoScope.git"
+                    className="w-9 h-9 bg-black/80 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ delay: 0.1 * i }}
+                  >
+                    <img src={githubIcon} alt="" className="h-5 w-5" />
+                  </motion.a>
+                ))}
+                <a
+                  className="font-semibold underline pt-2 pb-2"
+                  href="https://github.com/Bimbok"
                 >
-                  <img src={githubIcon} alt="" className="h-5 w-5" />
-                </motion.a>
-              ))}
+                  bimbok
+                </a>
+                <a
+                  className="font-semibold underline"
+                  href="https://github.com/adityapaul26"
+                >
+                  adityapaul26
+                </a>
+                .
+              
             </div>
           </motion.div>
         </div>
@@ -94,7 +109,21 @@ const Footer = () => {
           transition={{ delay: 0.8 }}
         >
           <div className="container mx-auto px-6 py-4 text-center text-sm text-gray-900">
-            © 2025 AlgoScope — Made with ❤️ for learners by bimbok & aditya.
+            © 2025 AlgoScope — Made with ❤️ for learners by{' '}
+            <a
+              className="font-semibold underline"
+              href="https://github.com/Bimbok"
+            >
+              bimbok
+            </a>{' '}
+            &{' '}
+            <a
+              className="font-semibold underline"
+              href="https://github.com/adityapaul26"
+            >
+              adityapaul26
+            </a>
+            .
           </div>
         </motion.div>
       </div>
