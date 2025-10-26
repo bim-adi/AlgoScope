@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 // 1. Import motion and AnimatePresence
 import { motion, AnimatePresence } from 'framer-motion'
 import githubIcon from '../assets/github-mark-white.svg'
+import logo from '../assets/logo2.png'
 
 // 2. Define the bounce transition
 const bounceTransition = {
@@ -76,8 +77,16 @@ export const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 rounded-lg shadow-lg">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="text-xl font-semibold tracking-tight">
+          <Link
+            to="/"
+            className="flex flex-row text-xl font-semibold tracking-tight"
+          >
+            <div className="w-10 h-10 m-auto rounded flex items-center justify-center mr-3">
+              <img src={logo} alt="" />
+            </div>
+            <span className='mt-1 text-2xl'>
             AlgoScope
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">

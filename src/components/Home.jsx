@@ -61,7 +61,7 @@ export const Home = () => {
           animate="visible"
           aria-label={title}
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-pink-800 to-cyan-800">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200  to-cyan-400">
             {title.split('').map((char, index) => (
               <motion.span
                 key={index}
@@ -93,35 +93,35 @@ export const Home = () => {
             <AlgoCard
               title="Sorting Algorithms"
               description="Bubble, Merge, Quick, Heap Sort, etc."
-              color="bg-blue-500/30"
+              color="bg-blue-500/60"
               link="/sort"
               image={SortingImg}
             />
             <AlgoCard
               title="Searching Algorithms"
               description="BFS, DFS..."
-              color="bg-green-500/30"
+              color="bg-green-500/60"
               link="/search"
               image={SearchingImg}
             />
             <AlgoCard
               title="Graph Algorithms"
               description="Dijkstra, Floyd-Warshall, Topological Sort..."
-              color="bg-pink-500/30"
+              color="bg-pink-500/60"
               link="/spath"
               image={GraphAlgoImg}
             />
             <AlgoCard
               title="Array Searching"
               description="Linear Search, Binary Search..."
-              color="bg-purple-500/30"
+              color="bg-purple-500/60"
               link="/ldssearch"
               image={LinearSearchImg}
             />
             <AlgoCard
               title="Abstract Data Types (beta)"
               description="Stacks, Queues, Linked Lists..."
-              color="bg-yellow-500/30"
+              color="bg-yellow-500/60"
               link="/"
               image={LinearSearchImg}
             />
