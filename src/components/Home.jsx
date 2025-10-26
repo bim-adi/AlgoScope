@@ -53,7 +53,7 @@ const subtitleVariants = {
 export const Home = () => {
   return (
     <div className="min-h-screen w-full bg-white-900 text-white">
-      <div className="text-center p-8">
+      <div className="text-center p-8 mt-25 mb-15">
         <motion.h1
           className="text-6xl md:text-7xl font-extrabold mb-4"
           variants={containerVariants}
@@ -61,7 +61,7 @@ export const Home = () => {
           animate="visible"
           aria-label={title}
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-pink-800 to-cyan-800">
             {title.split('').map((char, index) => (
               <motion.span
                 key={index}
