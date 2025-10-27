@@ -53,8 +53,8 @@ const subtitleVariants = {
 
 export const Home = () => {
   return (
-    <div className="min-h-screen w-full bg-white-900 text-white">
-      <div className="text-center p-8 mt-25 mb-15">
+    <div className=" font-geist min-h-screen w-full bg-white-900 text-white ">
+      <div className="font-geist text-center p-8 mt-25 mb-15 ">
         <motion.h1
           className="text-6xl md:text-7xl font-extrabold mb-4"
           variants={containerVariants}
@@ -75,7 +75,7 @@ export const Home = () => {
           </span>
         </motion.h1>
         <motion.p
-          className="text-xl md:text-2xl text-gray-300"
+          className="font-geist text-xl md:text-2xl text-gray-300 "
           variants={subtitleVariants}
           initial="hidden"
           animate="visible"
