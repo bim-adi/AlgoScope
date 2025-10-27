@@ -5,6 +5,7 @@ import SearchingImg from '../assets/bfs_dfs.png'
 import LinearSearchImg from '../assets/new-arr.png'
 import GraphAlgoImg from '../assets/graph.png'
 import { motion } from 'framer-motion'
+import About from './about/About'
 
 const title = 'Welcome to AlgoScope'
 const subtitle = 'Your ultimate guide to algorithm visualization.'
@@ -127,6 +128,7 @@ export const Home = () => {
             />
           </motion.div>
         </div>
+        <About />
       </div>
     </div>
   )
