@@ -128,7 +128,6 @@ export const Home = () => {
             />
           </motion.div>
         </div>
-        <About />
       </div>
     </div>
   )
