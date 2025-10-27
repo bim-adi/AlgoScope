@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 
 const LinearSearch = () => {
   const [array, setArray] = useState([
-    50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101, 93, 63
+    50, 120, 72, 30, 203, 90, 160, 88, 17, 45, 37, 99, 101, 93, 63,
   ])
   const [target, setTarget] = useState(30)
   const [isSearching, setIsSearching] = useState(false)
@@ -74,12 +74,12 @@ const LinearSearch = () => {
           </span>
         ))}
       </div>
-      <div className="flex items-center space-x-4 mb-8">
+      <div className="flex flex-col lg:flex-row items-center space-x-4 mb-8">
         <input
           type="number"
           value={target}
           onChange={(e) => setTarget(e.target.value)}
-          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 m-2"
           placeholder="Enter a number"
         />
         <button
@@ -118,3 +118,4 @@ const LinearSearch = () => {
 }
 
 export default LinearSearch
+

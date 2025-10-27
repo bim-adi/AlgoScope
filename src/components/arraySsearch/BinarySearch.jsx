@@ -57,9 +57,9 @@ const BinarySearch = () => {
 
     while (left <= right) {
       for (let i = 0; i < arr.length; i++) {
-        if(i < left || i > right) {
-            dehighlight(i, 'left')
-            dehighlight(i, 'right')
+        if (i < left || i > right) {
+          dehighlight(i, 'left')
+          dehighlight(i, 'right')
         }
       }
       highlight(left, 'left')
@@ -108,12 +108,12 @@ const BinarySearch = () => {
           </span>
         ))}
       </div>
-      <div className="flex items-center space-x-4 mb-8">
+      <div className="flex flex-col lg:flex-row items-center space-x-4 mb-8">
         <input
           type="number"
           value={target}
           onChange={(e) => setTarget(e.target.value)}
-          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 m-2"
           placeholder="Enter a number"
         />
         <button
@@ -163,3 +163,4 @@ const BinarySearch = () => {
 }
 
 export default BinarySearch
+
