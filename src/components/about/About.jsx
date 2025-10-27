@@ -96,7 +96,7 @@ export default function AboutAlgoScope() {
       transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
     >
       {/* Hero Section */}
-      <div className="w-full m-auto text-center py-12"></div>
+      <div className="max-w-6xl m-auto text-center py-12"></div>
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto">
@@ -167,7 +167,7 @@ export default function AboutAlgoScope() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <AuthorCard
-                name="Developer One"
+                name="Aditya Paul"
                 role="Full Stack Developer"
                 image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
                 github="https://github.com"
@@ -175,7 +175,7 @@ export default function AboutAlgoScope() {
                 description="Passionate about creating interactive learning experiences and building scalable web applications."
               />
               <AuthorCard
-                name="Developer Two"
+                name="Bratik Mukherjee"
                 role="Frontend Developer"
                 image="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
                 github="https://github.com"

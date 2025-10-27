@@ -82,7 +82,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${calmDawn}`}
+            className={`min-h-screen flex flex-col ${calmDawn} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}

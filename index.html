@@ -1,18 +1,24 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlgoScope</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+      .geist {
+        font-family: 'Geist', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logo2.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlgoScope</title>
-  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist" />
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+  <body class="geist">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
