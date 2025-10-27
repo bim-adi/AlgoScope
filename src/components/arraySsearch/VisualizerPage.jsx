@@ -14,9 +14,9 @@ const ArrayVisualizerPage = () => {
   return (
     <motion.div
       className="lg:w-full w-auto lg:flex-row p-4 bg-slate-50 min-h-screen shadow-md rounded-2xl backdrop-blur supports-[backdrop-filter]:bg-white/60 "
-      initial={{ opacity: 0, y: 20 }} // Start: invisible and 20px down
-      animate={{ opacity: 1, y: 0 }} // End: fully visible at original position
-      transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="flex justify-center mb-8">
         <select
