@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function AlgoCard({
   title,
@@ -8,7 +8,7 @@ export default function AlgoCard({
   link,
   image,
 }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -17,19 +17,19 @@ export default function AlgoCard({
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 10,
         stiffness: 100,
       },
     },
-  };
+  }
 
   const glowVariants = {
     hover: {
       boxShadow: `0 0 20px 5px ${color.replace('bg-', 'var(--glow-')})`,
       transition: { duration: 0.3 },
     },
-  };
+  }
 
   return (
     <motion.div
@@ -56,7 +56,7 @@ export default function AlgoCard({
         )}
       </div>
       <div
-        className={`px-6 py-4 flex justify-end bg-white/20`}
+        className={`px-6 py-4 flex justify-end relative bottom-0 bg-white/20`}
       >
         <motion.button
           className="text-base font-semibold text-gray-800 bg-white/80 hover:bg-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
@@ -69,5 +69,5 @@ export default function AlgoCard({
         </motion.button>
       </div>
     </motion.div>
-  );
+  )
 }
