@@ -1,6 +1,7 @@
 import React from 'react'
 import AuthorCard from './AuthorCard'
 import FeatureCard from './FeatureCard'
+import { motion } from 'framer-motion'
 
 export default function AboutAlgoScope() {
   const features = [
@@ -88,7 +89,12 @@ export default function AboutAlgoScope() {
   ]
 
   return (
-    <div className="flex flex-col gap-4 p-4">
+    <motion.div
+      className="flex flex-col gap-4 p-4"
+      initial={{ opacity: 0, y: 20 }} // Start: invisible and 20px down
+      animate={{ opacity: 1, y: 0 }} // End: fully visible at original position
+      transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
+    >
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto text-center py-12"></div>
 
@@ -180,6 +186,6 @@ export default function AboutAlgoScope() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
