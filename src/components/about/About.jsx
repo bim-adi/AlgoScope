@@ -96,7 +96,7 @@ export default function AboutAlgoScope() {
       transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
     >
       {/* Hero Section */}
-      <div className="max-w-6xl mx-auto text-center py-12"></div>
+      <div className="w-full m-auto text-center py-12"></div>
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto">
