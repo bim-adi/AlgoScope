@@ -16,13 +16,14 @@ function App() {
   let roseIndigo = 'bg-gradient-to-br from-indigo-800 to-rose-500'
   let forestGold = 'bg-gradient-to-br from-green-900 to-yellow-500'
   let arcticRuby = 'bg-gradient-to-br from-sky-400 to-rose-700'
+  let modern = 'bg-gradient-to-br from-[#0a1929] to-[#1a2332]'
   const route = createBrowserRouter([
     {
       path: '/',
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${luxurySunset} transition-colors duration-700`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -41,7 +42,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${roseIndigo} transition-colors duration-700 overflow-hidden`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700 overflow-hidden`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -63,7 +64,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${forestGold} transition-colors duration-700`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -82,7 +83,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${calmDawn} transition-colors duration-700`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -101,7 +102,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${arcticRuby} transition-colors duration-700`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -119,7 +120,7 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${arcticRuby} transition-colors duration-700`}
+            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >

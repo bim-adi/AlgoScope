@@ -109,7 +109,7 @@ export default function AboutAlgoScope() {
                 About AlgoScope
               </h2>
             </div>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-900 leading-relaxed">
               <p>
                 AlgoScope is an interactive web application built to help
                 learners visualize algorithms in an intuitive and engaging way.
@@ -149,7 +149,7 @@ export default function AboutAlgoScope() {
                 👩‍💻 Our Vision
               </h2>
             </div>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-900 leading-relaxed text-lg">
               Learning algorithms shouldn't be about memorizing code — it should
               be about understanding how they work. AlgoScope bridges that gap
               by turning logic into motion, empowering learners to see the flow
