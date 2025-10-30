@@ -56,7 +56,7 @@ export const Home = () => {
     <div className="min-h-screen w-full bg-white-900 text-white  ">
       <div className="text-center p-8 mt-25 mb-15">
         <motion.h1
-          className="text-6xl md:text-8xl lg:text-8xl font-extrabold mb-4 bitcount-grid-single justify-center"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 bitcount-grid-single"
           initial={{ opacity: 0 }}
           animate={{
             opacity: [0, 0.3, 0, 0.8, 0.2, 1, 0.9, 1],
@@ -78,14 +78,14 @@ export const Home = () => {
           }}
           aria-label={'Welcome to AlgoScope'}
         >
-          <div className="flex flex-col lg:flex-row bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-pink-300 to-purple-400">
-            <div>Welcome </div>
-            <div>to </div>
-            <div>AlgoScope</div>
+          <div className="flex flex-col sm:flex-row justify-center items-center lg:items-baseline gap-1 sm:gap-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-pink-300 to-purple-400 mx-auto">
+            <div className='mx-2'>Welcome</div>
+            <div className='mx-2'>to</div>
+            <div className='mx-2'>AlgoScope</div>
           </div>
         </motion.h1>
         <motion.p
-          className="font-geist text-xl md:text-2xl text-gray-300 relative"
+          className="font-geist text-base sm:text-lg md:text-2xl text-gray-300 relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
