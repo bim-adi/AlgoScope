@@ -53,7 +53,7 @@ const subtitleVariants = {
 
 export const Home = () => {
   return (
-    <div className="min-h-screen w-full bg-white-900 text-white  ">
+    <div className="min-h-screen w-full bg-white-900 text-white overflow-hidden">
       <div className="text-center p-8 mt-25 mb-15">
         <motion.h1
           className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 bitcount-grid-single"
