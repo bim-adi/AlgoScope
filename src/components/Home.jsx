@@ -115,28 +115,28 @@ export const Home = () => {
             <AlgoCard
               title="Searching Algorithms"
               description="BFS, DFS..."
-              color="bg-green-500/60"
+              color="bg-[#06B6D4]/60"
               link="/search"
               image={SearchingImg}
             />
             <AlgoCard
               title="Graph Algorithms"
               description="Dijkstra, Floyd-Warshall, Topological Sort..."
-              color="bg-pink-500/60"
+              color="bg-[#8B5CF6]/60"
               link="/spath"
               image={GraphAlgoImg}
             />
             <AlgoCard
               title="Array Searching"
               description="Linear Search, Binary Search..."
-              color="bg-purple-500/60"
+              color="bg-[#FB923C]/60"
               link="/ldssearch"
               image={LinearSearchImg}
             />
             <AlgoCard
               title="Abstract Data Types (beta)"
               description="Stacks, Queues, Linked Lists..."
-              color="bg-yellow-500/60"
+              color="bg-[#10B981]/60"
               link="/"
               image={LinearSearchImg}
             />

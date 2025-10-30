@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <motion.footer
-      className="relative m-auto w-full bg-gradient-to-r from-cyan-100 via-blue-100 to-indigo-100 text-gray-700 overflow-hidden rounded-xl"
+      className="relative m-auto w-full text-gray-700 overflow-hidden rounded-xl bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 "
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -33,7 +33,7 @@ const Footer = () => {
                 AlgoScope
               </h3>
             </div>
-            <p className="text-gray-900 text-sm max-w-xs">
+            <p className="text-slate-800 text-md max-w-xs">
               Visualize and understand algorithms with smooth, interactive
               animations.
             </p>
@@ -68,35 +68,34 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-              <h4 className="text-lg font-semibold mb-3 text-purple-900">
-                Connect
-              </h4>
-              <div className="flex flex-col space-x-4">
-                {['GitHub'].map((platform, i) => (
-                  <motion.a
-                    key={platform}
-                    href="https://github.com/bim-adi/AlgoScope.git"
-                    className="w-9 h-9 bg-black/80 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ delay: 0.1 * i }}
-                  >
-                    <img src={githubIcon} alt="" className="h-5 w-5" />
-                  </motion.a>
-                ))}
-                <a
-                  className="font-semibold underline pt-2 pb-2"
-                  href="https://github.com/Bimbok"
+            <h4 className="text-lg font-semibold mb-3 text-purple-900">
+              Connect
+            </h4>
+            <div className="flex flex-col space-x-4">
+              {['GitHub'].map((platform, i) => (
+                <motion.a
+                  key={platform}
+                  href="https://github.com/bim-adi/AlgoScope.git"
+                  className="w-9 h-9 bg-black/80 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ delay: 0.1 * i }}
                 >
-                  bimbok
-                </a>
-                <a
-                  className="font-semibold underline"
-                  href="https://github.com/adityapaul26"
-                >
-                  adityapaul26
-                </a>
-                .
-              
+                  <img src={githubIcon} alt="" className="h-5 w-5" />
+                </motion.a>
+              ))}
+              <a
+                className="font-semibold underline pt-2 pb-2"
+                href="https://github.com/Bimbok"
+              >
+                bimbok
+              </a>
+              <a
+                className="font-semibold underline"
+                href="https://github.com/adityapaul26"
+              >
+                adityapaul26
+              </a>
+              .
             </div>
           </motion.div>
         </div>

@@ -84,9 +84,7 @@ export const Navbar = () => {
             <div className="w-10 h-10 m-auto rounded flex items-center justify-center mr-3">
               <img src={logo} alt="" />
             </div>
-            <span className='mt-1 text-2xl'>
-            AlgoScope
-            </span>
+            <span className="mt-1 text-2xl">AlgoScope</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">

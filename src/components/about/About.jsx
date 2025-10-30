@@ -2,6 +2,8 @@ import React from 'react'
 import AuthorCard from './AuthorCard'
 import FeatureCard from './FeatureCard'
 import { motion } from 'framer-motion'
+import bratik from '../../assets/sukuna.png'
+import aditya from '../../assets/goku.png'
 
 export default function AboutAlgoScope() {
   const features = [
@@ -105,11 +107,11 @@ export default function AboutAlgoScope() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
-              <h2 className="text-3xl font-bold text-gray-800">
+              <h2 className="text-3xl font-bold text-slate-950">
                 About AlgoScope
               </h2>
             </div>
-            <div className="space-y-4 text-gray-900 leading-relaxed">
+            <div className="text-lg space-y-4 text-gray-900 text-shadow-white-900 leading-relaxed">
               <p>
                 AlgoScope is an interactive web application built to help
                 learners visualize algorithms in an intuitive and engaging way.
@@ -169,17 +171,17 @@ export default function AboutAlgoScope() {
               <AuthorCard
                 name="Aditya Paul"
                 role="Full Stack Developer"
-                image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
-                github="https://github.com"
-                linkedin="https://linkedin.com"
+                image={aditya}
+                github="https://github.com/adityapaul26"
+                linkedin="https://linkedin.com/in/aditya-paul-b8881a31b/"
                 description="Passionate about creating interactive learning experiences and building scalable web applications."
               />
               <AuthorCard
                 name="Bratik Mukherjee"
-                role="Frontend Developer"
-                image="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
-                github="https://github.com"
-                linkedin="https://linkedin.com"
+                role="Full Stack Developer"
+                image={bratik}
+                github="https://github.com/Bimbok"
+                linkedin="https://linkedin.com/in/bratik-mukherjee"
                 description="Specializing in UI/UX design and algorithm visualization with modern web technologies."
               />
             </div>
