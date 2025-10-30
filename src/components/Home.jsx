@@ -53,10 +53,10 @@ const subtitleVariants = {
 
 export const Home = () => {
   return (
-    <div className="min-h-screen w-full bg-white-900 text-white ">
-      <div className="text-center p-8 mt-25 mb-15 ">
+    <div className="min-h-screen w-full bg-white-900 text-white  ">
+      <div className="text-center p-8 mt-25 mb-15">
         <motion.h1
-          className="text-8xl md:text-8xl font-extrabold mb-4 bitcount-grid-single"
+          className="text-6xl md:text-8xl lg:text-8xl font-extrabold mb-4 bitcount-grid-single justify-center"
           initial={{ opacity: 0 }}
           animate={{
             opacity: [0, 0.3, 0, 0.8, 0.2, 1, 0.9, 1],
@@ -76,11 +76,13 @@ export const Home = () => {
             times: [0, 0.1, 0.2, 0.4, 0.5, 0.7, 0.85, 1],
             ease: 'easeInOut',
           }}
-          aria-label={title}
+          aria-label={'Welcome to AlgoScope'}
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-pink-300 to-purple-400">
-            {title}
-          </span>
+          <div className="flex flex-col lg:flex-row bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-pink-300 to-purple-400">
+            <div>Welcome </div>
+            <div>to </div>
+            <div>AlgoScope</div>
+          </div>
         </motion.h1>
         <motion.p
           className="font-geist text-xl md:text-2xl text-gray-300 relative"
@@ -88,7 +90,11 @@ export const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Your ultimate guide to <span className='font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 [text-shadow:_0_0_20px_rgba(34,211,238,0.3)] space-mono-bold-italic tracking-tighter'>algorithm</span> visualization.
+          Your ultimate guide to{' '}
+          <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 [text-shadow:_0_0_20px_rgba(34,211,238,0.3)] space-mono-bold-italic tracking-tighter">
+            algorithm
+          </span>{' '}
+          visualization.
         </motion.p>
       </div>
       <div className="w-full m-auto px-10 py-10 relative">
