@@ -7,6 +7,7 @@ export const CanvasSearching = ({ algorithm, vertex, speed = 1 }) => {
   const nodesRef = useRef(null)
   const edgesRef = useRef(null)
   const [status, setStatus] = useState('select an algo to display progress...')
+  const [physics, setPhysics] = useState(false)
 
   // initialize network
   useEffect(() => {
@@ -64,7 +65,7 @@ export const CanvasSearching = ({ algorithm, vertex, speed = 1 }) => {
 
     const options = {
       physics: {
-        enabled: false,
+        enabled: physics,
         stabilization: {
           enabled: true,
           iterations: 100,
@@ -130,6 +131,14 @@ export const CanvasSearching = ({ algorithm, vertex, speed = 1 }) => {
       network.destroy()
     }
   }, [])
+
+  useEffect(() => {
+    if (networkRef.current) {
+      networkRef.current.setOptions({
+        physics: { enabled: physics },
+      })
+    }
+  }, [physics])
 
   // Reset nodes to default color with smooth transition
   const resetNodes = () => {
@@ -345,16 +354,59 @@ export const CanvasSearching = ({ algorithm, vertex, speed = 1 }) => {
   }, [algorithm, vertex, speed])
 
   return (
-    <>
-      <div
-        id="cy"
-        ref={containerRef}
-        className="h-[600px] m-auto rounded-lg border-2 border-stone-500 bg-gradient-to-br from-yellow-50 to-yellow-100 shadow-lg w-auto md:w-auto lg:w-auto xl:w-auto 2xl:w-auto "
-        style={{
-          background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
-        }}
-      />
+    <div className="w-full max-w-6xl m-auto relative">
+      <div className="relative rounded-lg border-2 border-stone-500 shadow-lg overflow-hidden h-[600px]">
+        <div
+          id="cy"
+          ref={containerRef}
+          className="h-full w-full"
+          style={{
+            background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
+          }}
+        />
+        <button
+          onClick={() => setPhysics(!physics)}
+          className={`absolute top-4 right-4 z-10 flex items-center gap-2 px-4 py-2 font-bold rounded-lg shadow-md transition-all duration-300 ${
+            physics
+              ? 'bg-amber-500 text-white hover:bg-amber-600 ring-2 ring-amber-300'
+              : 'bg-white/90 text-stone-700 hover:bg-white ring-1 ring-stone-300'
+          }`}
+        >
+          {physics ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 5.25v13.5m-7.5-13.5v13.5"
+              />
+            </svg>
+          )}
+          {physics ? 'Physics ON' : 'Physics PAUSED'}
+        </button>
+      </div>
       <StatusDisplay message={status} />
-    </>
+    </div>
   )
 }
