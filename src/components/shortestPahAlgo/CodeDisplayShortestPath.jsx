@@ -253,6 +253,7 @@ const themes = {
 export const CodeDisplayShortestPath = ({ algorithm }) => {
   const [language, setLanguage] = useState('javascript')
   const [theme, setTheme] = useState('vscDarkPlus')
+  const [copied, setCopied] = useState(false)
 
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value)
@@ -260,6 +261,13 @@ export const CodeDisplayShortestPath = ({ algorithm }) => {
 
   const handleThemeChange = (e) => {
     setTheme(e.target.value)
+  }
+
+  const handleCopy = () => {
+    const code = algorithm ? codeSnippets[algorithm]?.[language] : ''
+    navigator.clipboard.writeText(code)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   const code = algorithm ? codeSnippets[algorithm]?.[language] : ''
@@ -307,6 +315,16 @@ export const CodeDisplayShortestPath = ({ algorithm }) => {
               </option>
             ))}
           </select>
+          <button
+            onClick={handleCopy}
+            className={`flex-1 sm:flex-none text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium ${
+              copied
+                ? 'bg-green-600 text-white'
+                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+            }`}
+          >
+            {copied ? 'Copied!' : 'Copy Code'}
+          </button>
         </div>
       </div>
       {algorithm ? (

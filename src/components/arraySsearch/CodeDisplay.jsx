@@ -195,6 +195,27 @@ export const CodeDisplay = ({ algorithm }) => {
               </option>
             ))}
           </select>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(code)
+              const btn = document.getElementById('copy-btn-array')
+              if (btn) {
+                const originalText = btn.innerText
+                btn.innerText = 'Copied!'
+                btn.classList.add('bg-green-600', 'text-white')
+                btn.classList.remove('bg-slate-700', 'text-slate-300')
+                setTimeout(() => {
+                  btn.innerText = originalText
+                  btn.classList.remove('bg-green-600', 'text-white')
+                  btn.classList.add('bg-slate-700', 'text-slate-300')
+                }, 2000)
+              }
+            }}
+            id="copy-btn-array"
+            className="flex-1 sm:flex-none bg-slate-700 text-slate-300 text-sm rounded-lg px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 transition-all hover:bg-slate-600 font-medium"
+          >
+            Copy Code
+          </button>
         </div>
       </div>
       {algorithm ? (
