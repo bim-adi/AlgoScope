@@ -5,138 +5,117 @@ import SearchingImg from '../assets/bfs_dfs.png'
 import LinearSearchImg from '../assets/new-arr.png'
 import GraphAlgoImg from '../assets/graph.png'
 import { motion } from 'framer-motion'
-import About from './about/About'
 
-const title = 'Welcome to AlgoScope'
-const subtitle = 'Your ultimate guide to algorithm visualization.'
-
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const charVariants = {
-  hidden: {
-    opacity: 0,
-    y: 25,
-    scale: 0.8,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      damping: 10,
-      stiffness: 90,
-    },
-  },
-}
-
-const subtitleVariants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: title.length * 0.08 + 0.6,
-      duration: 0.6,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
   },
 }
 
 export const Home = () => {
   return (
-    <div className="min-h-screen w-full bg-white-900 text-white overflow-hidden">
-      <div className="text-center p-8 mt-25 mb-15">
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 bitcount-grid-single"
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: [0, 0.3, 0, 0.8, 0.2, 1, 0.9, 1],
-            textShadow: [
-              '0 0 0px rgba(0,255,255,0)',
-              '0 0 5px rgba(0,255,255,0.3)',
-              '0 0 0px rgba(0,255,255,0)',
-              '0 0 15px rgba(0,255,255,0.5)',
-              '0 0 5px rgba(0,255,255,0.2)',
-              '0 0 20px rgba(0,255,255,0.4), 0 0 40px rgba(0,255,255,0.3)',
-              '0 0 15px rgba(0,255,255,0.3)',
-              '0 0 20px rgba(0,255,255,0.4), 0 0 40px rgba(0,255,255,0.3)',
-            ],
-          }}
-          transition={{
-            duration: 3.0,
-            times: [0, 0.1, 0.2, 0.4, 0.5, 0.7, 0.85, 1],
-            ease: 'easeInOut',
-          }}
-          aria-label={'Welcome to AlgoScope'}
-        >
-          <div className="flex flex-col sm:flex-row justify-center items-center lg:items-baseline gap-1 sm:gap-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-pink-300 to-purple-400 mx-auto">
-            <div className="mx-2">Welcome</div>
-            <div className="mx-2">to</div>
-            <div className="mx-2">AlgoScope</div>
-          </div>
-        </motion.h1>
-        <motion.p
-          className="font-geist text-base sm:text-lg md:text-2xl text-gray-300 relative"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          Your ultimate guide to{' '}
-          <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 [text-shadow:_0_0_20px_rgba(34,211,238,0.3)] space-mono-bold-italic tracking-tighter">
-            algorithm
-          </span>{' '}
-          visualization.
-        </motion.p>
+    <div className="relative min-h-screen w-full bg-[#020617] text-white overflow-hidden selection:bg-cyan-500/30">
+      {/* Background Grid & Glow */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[300px] w-[300px] rounded-full bg-cyan-500 opacity-20 blur-[100px]"></div>
+        <div className="absolute right-0 bottom-0 -z-10 h-[300px] w-[300px] rounded-full bg-purple-500 opacity-10 blur-[120px]"></div>
       </div>
-      <div className="w-full m-auto px-10 py-10 relative">
-        <div className="max-w-7xl mx-auto">
+
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-32 pb-16">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="text-center max-w-4xl mx-auto space-y-6"
+        >
+          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm mb-4">
+             <span className="text-xs font-mono text-cyan-400 tracking-wider uppercase">v1.0 Public Beta</span>
+          </div>
+
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter">
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-gray-500">
+              Algo
+            </span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-cyan-400 to-purple-500">
+              Scope
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-2xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+            Unravel the complexity of code. <br className="hidden md:block" />
+            <span className="text-cyan-300 font-mono">Visualize</span> algorithms in real-time.
+          </p>
+
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="pt-8"
+          >
+            <a
+              href="#explore"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+            >
+              Start Exploring
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Cards Grid */}
+        <div id="explore" className="w-full max-w-7xl mx-auto mt-32 px-4">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+            <span className="text-slate-500 font-mono text-sm uppercase tracking-widest">Algorithms</span>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+          </div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
-            <AlgoCard
-              title="Sorting Algorithms"
-              description="Bubble, Merge, Quick, Heap Sort, etc."
-              color="bg-blue-500/60"
+             <AlgoCard
+              title="Sorting"
+              description="Visualizing Bubble, Merge, Quick, and Heap Sort."
+              color="bg-slate-900/50 border-blue-500/30 hover:border-blue-400"
               link="/sort"
               image={SortingImg}
             />
             <AlgoCard
-              title="Searching Algorithms"
-              description="BFS, DFS..."
-              color="bg-[#06B6D4]/60"
+              title="Searching"
+              description="Explore BFS, DFS, and other traversal methods."
+              color="bg-slate-900/50 border-cyan-500/30 hover:border-cyan-400"
               link="/search"
               image={SearchingImg}
             />
             <AlgoCard
               title="Graph Algorithms"
-              description="Dijkstra, Floyd-Warshall, Topological Sort..."
-              color="bg-[#8B5CF6]/60"
+              description="Dijkstra, Floyd-Warshall, and Topological Sort."
+              color="bg-slate-900/50 border-purple-500/30 hover:border-purple-400"
               link="/spath"
               image={GraphAlgoImg}
             />
             <AlgoCard
-              title="Array Searching"
-              description="Linear Search, Binary Search..."
-              color="bg-[#FB923C]/60"
+              title="Array Search"
+              description="Linear and Binary search visualization."
+              color="bg-slate-900/50 border-orange-500/30 hover:border-orange-400"
               link="/ldssearch"
               image={LinearSearchImg}
             />
-            <AlgoCard
-              title="Abstract Data Types (beta)"
-              description="Stacks, Queues, Linked Lists..."
-              color="bg-[#10B981]/60"
+             <AlgoCard
+              title="Abstract Data Types"
+              description="Stacks, Queues, Linked Lists (Beta)."
+              color="bg-slate-900/50 border-emerald-500/30 hover:border-emerald-400"
               link="/"
               image={LinearSearchImg}
             />
