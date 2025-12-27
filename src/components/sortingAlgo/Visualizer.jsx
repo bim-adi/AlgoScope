@@ -4,19 +4,19 @@ import SpeedSlider from '../SpeedSlider.jsx'
 
 const CountArrayDisplay = ({ title, data, barWidth = 20 }) => (
   <div className="flex flex-col items-center">
-    <h3 className="text-lg font-semibold text-slate-800 mb-2">{title}</h3>
+    <h3 className="text-lg font-semibold text-slate-200 mb-2">{title}</h3>
     <div
-      className="flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2"
-      style={{ background: '#DDDEAB' }}
+      className="flex gap-2 items-end h-[300px] p-4 rounded-xl border border-slate-700"
+      style={{ background: 'rgba(15, 23, 42, 0.5)' }}
     >
       {data.map((value, idx) => (
         <div
           key={idx}
-          className="count-bar rounded transition-all duration-500 border-2 border-b-black"
+          className="count-bar rounded transition-all duration-500 border border-slate-600"
           style={{
             height: `${value * 20}px`,
             width: `${barWidth}px`,
-            background: '#4ECDC4',
+            background: '#06b6d4',
             position: 'relative',
           }}
         >
@@ -37,7 +37,9 @@ export default function Visualizer({ algorithmType }) {
   const [speed, setSpeed] = useState(1)
   const barsRef = useRef([])
   const eleRef = useRef([])
-
+  
+  // ... (keep existing state and logic until return) ...
+  
   useEffect(() => {
     barsRef.current = document.querySelectorAll('.bar')
     eleRef.current = document.querySelectorAll('.array-ele')
@@ -466,22 +468,22 @@ export default function Visualizer({ algorithmType }) {
     <div className="flex flex-col p-6">
       <div className="w-full">
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold mb-4">
+          <h1 className="text-3xl font-bold mb-6 text-white tracking-tight">
             {`${algorithmType.charAt(0).toUpperCase() + algorithmType.slice(1)} Sorting`}
           </h1>
 
-          <div className="flex flex-col items-center">
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">Array</h3>
+          <div className="flex flex-col items-center w-full max-w-4xl">
+            <h3 className="text-lg font-semibold text-slate-300 mb-3">Array</h3>
             <div
               id="container"
-              className="flex gap-2 items-end h-[300px] p-4 rounded-xl border-b-black border-2 max-w-full"
-              style={{ background: '#DDDEAB' }}
+              className="flex gap-2 items-end h-[300px] p-6 rounded-2xl border border-slate-700 shadow-xl w-full justify-center backdrop-blur-sm"
+              style={{ background: 'rgba(30, 41, 59, 0.4)' }}
             >
               {array.map((val, idx) => (
                 <div
                   key={idx}
-                  className="bar rounded transition-all duration-500 border-2 border-b-black"
-                  style={{ height: `${val}px`, width: '30px' }}
+                  className="bar rounded-t-md transition-all duration-500 border border-cyan-900/50 shadow-[0_0_10px_rgba(6,182,212,0.2)]"
+                  style={{ height: `${val}px`, width: '30px', background: 'rgba(6, 182, 212, 0.8)' }}
                 >
                   <div className="bar-val">{val}</div>
                 </div>
@@ -491,7 +493,7 @@ export default function Visualizer({ algorithmType }) {
 
           <div
             id="dynamic-containers"
-            className="flex justify-center items-start gap-8 mt-4"
+            className="flex justify-center items-start gap-8 mt-6"
           >
             {countArray.length > 0 && (
               <CountArrayDisplay
@@ -509,27 +511,27 @@ export default function Visualizer({ algorithmType }) {
             )}
           </div>
 
-          <div className="next p-4">
+          <div className="next p-6 flex flex-wrap gap-2 justify-center">
             {array.map((item, idx) => (
               <span
                 key={idx}
-                className="array-ele rounded-lg transition-all duration-500"
+                className="array-ele rounded-lg transition-all duration-300 font-mono text-sm bg-slate-800 text-cyan-400 border border-slate-600 px-3 py-2 shadow-sm"
               >
                 {item}
               </span>
             ))}
           </div>
 
-          <div className="mt-4 space-y-3">
-            <h3 className="text-lg font-semibold text-slate-800">Algorithm</h3>
-            <div className="m-auto space-y-2">
-              <div className="w-full max-w-sm min-w-[200px]">
+          <div className="mt-8 space-y-4 w-full max-w-md">
+            <h3 className="text-lg font-semibold text-slate-300 text-center">Controls</h3>
+            <div className="m-auto space-y-4">
+              <div className="w-full">
                 <div className="relative">
                   <select
                     value={selectedAlgorithm}
                     onChange={(e) => setSelectedAlgorithm(e.target.value)}
                     disabled={isSorting}
-                    className="w-full bg-transparent text-slate-800 text-sm border border-slate-600 rounded pl-3 pr-8 py-2 transition duration-300 focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer disabled:opacity-50"
+                    className="w-full bg-slate-900/80 text-white text-sm border border-slate-700 rounded-xl pl-4 pr-10 py-3 transition duration-300 focus:outline-none focus:border-cyan-500 hover:border-slate-600 shadow-lg appearance-none cursor-pointer disabled:opacity-50"
                   >
                     <option value="">Choose Algorithm</option>
                     {algorithmOptions[algorithmType].map((alg) => (
@@ -541,7 +543,7 @@ export default function Visualizer({ algorithmType }) {
                 </div>
               </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 px-4 py-2 bg-slate-900/50 rounded-xl border border-slate-700/50">
               <SpeedSlider
                 value={speed}
                 onChange={(e, v) => setSpeed(v)}
@@ -550,18 +552,18 @@ export default function Visualizer({ algorithmType }) {
                 step={0.05}
               />
             </div>
-            <div className="mt-4 gap-4 flex">
+            <div className="mt-6 gap-4 flex flex-col sm:flex-row">
               <button
                 onClick={handleSort}
                 disabled={isSorting || !selectedAlgorithm}
-                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-stone-950 text-white hover:bg-slate-700"
+                className="flex-1 text-sm font-bold py-3 px-6 rounded-xl transition-all duration-300 bg-cyan-600 text-white hover:bg-cyan-500 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
               >
                 {isSorting ? 'Sorting...' : 'Start Sort'}
               </button>
               <button
                 onClick={handleReset}
                 disabled={isSorting}
-                className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-stone-950 text-white hover:bg-slate-700"
+                className="flex-1 text-sm font-bold py-3 px-6 rounded-xl transition-all duration-300 bg-slate-700 text-white hover:bg-slate-600 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
               >
                 Generate New Array
               </button>
@@ -570,21 +572,28 @@ export default function Visualizer({ algorithmType }) {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full mt-8">
         <CodeDisplay algorithm={selectedAlgorithm} />
       </div>
 
       <style>{`
-        .array-ele { border: 2px solid black; padding: 5px; margin: 2px; }
-        .bar { background: #D92C54; border: 2px solid black; }
-        .bar.active, .array-ele.active { background: #8ABB6C !important; }
-        .bar.pivot, .array-ele.pivot { background: #FF6B6B !important; }
-        .bar.min, .array-ele.min { background: #4ECDC4 !important; }
-        .bar-val { display: flex; justify-content: center; color: #DDDEAB; font-size: small; font-weight: bolder; }
+        .array-ele.active { background: #10b981 !important; color: white; border-color: #059669; transform: scale(1.1); }
+        .array-ele.pivot { background: #f43f5e !important; color: white; border-color: #e11d48; }
+        .array-ele.min { background: #8b5cf6 !important; color: white; border-color: #7c3aed; }
+        
+        .bar.active { background: #10b981 !important; box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); border-color: #059669; }
+        .bar.pivot { background: #f43f5e !important; box-shadow: 0 0 15px rgba(244, 63, 94, 0.5); border-color: #e11d48; }
+        .bar.min { background: #8b5cf6 !important; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); border-color: #7c3aed; }
+        
+        .bar-val { 
+          display: flex; justify-content: center; 
+          color: rgba(255,255,255,0.9); font-size: 10px; font-weight: bold; 
+          padding-top: 4px;
+        }
         .count-val {
           display: flex; justify-content: center;
-          color: #000; font-size: small; font-weight: bolder;
-          position: absolute; bottom: -20px; width: 100%;
+          color: #e2e8f0; font-size: small; font-weight: bold;
+          position: absolute; bottom: -24px; width: 100%;
         }
       `}</style>
     </div>

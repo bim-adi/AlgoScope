@@ -92,37 +92,37 @@ const BinarySearch = () => {
   }
 
   return (
-    <div className="p-6 flex flex-col items-center rounded-lg bg-slate-800/50 border border-slate-700 shadow-xl mb-8">
-      <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6 tracking-wide">
+    <div className="p-8 flex flex-col items-center rounded-2xl bg-slate-900/50 border border-white/10 shadow-2xl mb-8 backdrop-blur-sm">
+      <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-8 tracking-wide">
         Binary Search Visualizer
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
+      <div className="flex flex-wrap justify-center gap-3 mb-10 w-full max-w-5xl">
         {array.map((item, idx) => (
           <span
             key={idx}
             ref={(el) => (eleRef.current[idx] = el)}
-            className="array-ele rounded-lg shadow-md border border-slate-600 px-4 py-2 text-lg font-semibold text-slate-100 bg-slate-700 transition-all duration-300"
+            className="array-ele rounded-xl shadow-lg border border-slate-700 px-4 py-3 text-lg font-mono font-medium text-slate-300 bg-slate-800/80 transition-all duration-300"
           >
             {item}
           </span>
         ))}
       </div>
-      <div className="flex flex-col lg:flex-row items-center space-x-4 mb-8">
+      <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
         <input
           type="number"
           value={target}
           onChange={(e) => setTarget(e.target.value)}
-          className="px-4 py-2 rounded-lg border border-slate-600 bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 m-2"
-          placeholder="Enter a number"
+          className="px-5 py-3 rounded-xl border border-slate-700 bg-slate-900/80 text-white focus:outline-none focus:border-cyan-500 focus:shadow-lg focus:shadow-cyan-500/20 w-48 text-center placeholder-slate-500 transition-all"
+          placeholder="Target Value"
         />
         <button
           disabled={isSearching}
           onClick={binarySearch}
-          className={`px-6 py-2 rounded-lg font-medium text-white shadow-md transition-all duration-300 ${
+          className={`px-8 py-3 rounded-xl font-bold text-white shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 ${
             isSearching
-              ? 'bg-slate-600 cursor-not-allowed'
-              : 'bg-blue-600 hover:bg-blue-700'
+              ? 'bg-slate-700 cursor-not-allowed opacity-70'
+              : 'bg-cyan-600 hover:bg-cyan-500 hover:shadow-cyan-500/30'
           }`}
         >
           {isSearching ? 'Searching...' : 'Start Search'}
@@ -137,25 +137,29 @@ const BinarySearch = () => {
         .array-ele.active { /* mid */
           background-color: #facc15 !important; /* yellow-400 */
           border-color: #fde047 !important; /* yellow-300 */
-          color: #1e293b !important; /* slate-800 */
+          color: #0f172a !important; /* slate-900 */
           transform: scale(1.1);
+          box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
         }
         
         .array-ele.left {
-            background-color: #60a5fa !important; /* blue-400 */
-            border-color: #93c5fd !important; /* blue-300 */
+            background-color: #06b6d4 !important; /* cyan-500 */
+            border-color: #22d3ee !important; /* cyan-400 */
+            color: white !important;
         }
         
         .array-ele.right {
-            background-color: #f87171 !important; /* red-400 */
-            border-color: #fca5a5 !important; /* red-300 */
+            background-color: #f43f5e !important; /* rose-500 */
+            border-color: #fb7185 !important; /* rose-400 */
+            color: white !important;
         }
 
         .array-ele.found {
-          background-color: #4ade80 !important; /* green-400 */
-          border-color: #86efac !important; /* green-300 */
-          color: #1e293b !important; /* slate-800 */
+          background-color: #10b981 !important; /* emerald-500 */
+          border-color: #34d399 !important; /* emerald-400 */
+          color: white !important;
           transform: scale(1.15);
+          box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
         }
       `}</style>
     </div>

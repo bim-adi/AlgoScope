@@ -66,20 +66,20 @@ export const CanvasShortestPath = ({
                 shape: 'dot',
                 size: 25,
                 color: {
-                    background: '#D92C54',
-                    border: '#000000',
-                    highlight: { background: '#8ABB6C', border: '#000000' },
+                    background: '#06b6d4', // Cyan-500
+                    border: '#e2e8f0',     // Slate-200
+                    highlight: { background: '#22d3ee', border: '#ffffff' },
                 },
                 font: {
                     size: 16,
-                    color: '#3E3F29',
+                    color: '#f8fafc',      // Slate-50
                     face: 'Arial',
                     bold: true,
                 },
                 borderWidth: 3,
                 shadow: {
                     enabled: true,
-                    color: 'rgba(0,0,0,0.3)',
+                    color: 'rgba(0,0,0,0.5)',
                     size: 10,
                     x: 5,
                     y: 5,
@@ -88,9 +88,9 @@ export const CanvasShortestPath = ({
             edges: {
                 arrows: { to: { enabled: true, scaleFactor: 0.8 } },
                 color: {
-                    color: '#000000',
-                    highlight: '#8ABB6C',
-                    hover: '#8ABB6C',
+                    color: '#64748b',      // Slate-500
+                    highlight: '#22d3ee',  // Cyan-400
+                    hover: '#22d3ee',
                 },
                 width: 3,
                 smooth: {
@@ -99,14 +99,16 @@ export const CanvasShortestPath = ({
                 },
                 shadow: {
                     enabled: true,
-                    color: 'rgba(0,0,0,0.3)',
+                    color: 'rgba(0,0,0,0.5)',
                     size: 10,
                     x: 5,
                     y: 5,
                 },
                 font: {
                     size: 14,
-                    color: '#000000',
+                    color: '#f8fafc',      // White text for edge labels
+                    strokeWidth: 2,        // Stroke to make text readable on lines
+                    strokeColor: '#0f172a', // Dark stroke
                     face: 'Arial',
                     bold: true,
                     align: 'middle',
@@ -142,14 +144,14 @@ export const CanvasShortestPath = ({
         nodesRef.current.get().forEach((n) => {
             nodesRef.current.update({
                 id: n.id,
-                color: { background: '#D92C54', border: '#000000' },
+                color: { background: '#06b6d4', border: '#e2e8f0' },
                 size: 25,
             })
         })
         edgesRef.current.get().forEach((e) => {
             edgesRef.current.update({
                 id: e.id,
-                color: { color: '#000000' },
+                color: { color: '#64748b' },
                 width: 3,
             })
         })
@@ -193,7 +195,7 @@ export const CanvasShortestPath = ({
                 // Animate node with size and color change
                 nodes.update({
                     id,
-                    color: { background: '#ff4136', border: '#000000' },
+                    color: { background: '#f43f5e', border: '#ffffff' }, // Rose-500
                     size: 35,
                 })
 
@@ -210,7 +212,7 @@ export const CanvasShortestPath = ({
                 // Animate edge with color and width change
                 edges.update({
                     id: edgeId,
-                    color: { color: '#8ABB6C' },
+                    color: { color: '#10b981' }, // Emerald-500
                     width: 6,
                 })
 
@@ -261,14 +263,14 @@ export const CanvasShortestPath = ({
                     pathNodes.forEach((n) => {
                         nodes.update({
                             id: n,
-                            color: { background: '#8ABB6C', border: '#000000' },
+                            color: { background: '#10b981', border: '#ffffff' }, // Emerald-500
                             size: 28,
                         })
                     })
                     pathEdges.forEach((eId) => {
                         edges.update({
                             id: eId,
-                            color: { color: '#8ABB6C' },
+                            color: { color: '#10b981' }, // Emerald-500
                             width: 5,
                         })
                     })
@@ -403,21 +405,21 @@ export const CanvasShortestPath = ({
 
     return (
         <div className="w-full max-w-6xl m-auto relative">
-            <div className="relative rounded-lg border-2 border-stone-500 shadow-lg overflow-hidden h-[600px]">
+            <div className="relative rounded-lg border border-white/10 shadow-lg overflow-hidden h-[600px] bg-slate-900/50 backdrop-blur-sm">
                 <div
                     id="cy-sp"
                     ref={containerRef}
                     className="h-full w-full"
                     style={{
-                        background: 'linear-gradient(135deg, #DDDEAB 0%, #fefce8 100%)',
+                        background: 'transparent',
                     }}
                 />
                 <button
                     onClick={() => setPhysics(!physics)}
-                    className={`absolute top-4 right-4 z-10 flex items-center gap-2 px-4 py-2 font-bold rounded-lg shadow-md transition-all duration-300 ${
+                    className={`absolute top-4 right-4 z-10 flex items-center gap-2 px-4 py-2 font-bold rounded-lg shadow-md transition-all duration-300 border backdrop-blur-md ${
                         physics
-                            ? 'bg-amber-500 text-white hover:bg-amber-600 ring-2 ring-amber-300'
-                            : 'bg-white/90 text-stone-700 hover:bg-white ring-1 ring-stone-300'
+                            ? 'bg-amber-500/20 text-amber-400 border-amber-500/50 hover:bg-amber-500/30'
+                            : 'bg-slate-800/50 text-slate-300 border-white/10 hover:bg-slate-800/80 hover:text-white'
                     }`}
                 >
                     {physics ? (

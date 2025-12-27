@@ -10,8 +10,8 @@ export const MenuSetAlgoShortestPath = ({ setAlgorithm }) => {
   }
 
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-slate-800">
+    <div className="space-y-4">
+      <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider pl-1">
         Algorithm Selection
       </h3>
       <form className="m-auto">
@@ -19,7 +19,7 @@ export const MenuSetAlgoShortestPath = ({ setAlgorithm }) => {
           <div className="relative">
             <select
               onChange={handleChange}
-              className="w-full bg-transparent placeholder:text-slate-500 text-slate-800 text-sm border border-slate-600 rounded pl-3 pr-8 py-2 transition duration-300 focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer"
+              className="w-full bg-slate-800 placeholder:text-slate-500 text-white text-sm border border-slate-700 rounded-xl pl-4 pr-10 py-3 transition duration-300 focus:outline-none focus:border-cyan-500 hover:border-slate-500 shadow-sm focus:shadow-md appearance-none cursor-pointer"
             >
               <option value="">Choose an Algorithm</option>
               <option value="dijkstra">Dijkstra</option>
@@ -32,7 +32,7 @@ export const MenuSetAlgoShortestPath = ({ setAlgorithm }) => {
               viewBox="0 0 24 24"
               strokeWidth="1.2"
               stroke="currentColor"
-              className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-900"
+              className="h-5 w-5 ml-1 absolute top-3.5 right-4 text-slate-400 pointer-events-none"
             >
               <path
                 strokeLinecap="round"
@@ -45,7 +45,7 @@ export const MenuSetAlgoShortestPath = ({ setAlgorithm }) => {
       </form>
       <button
         onClick={handleReset}
-        className="w-full text-sm font-medium py-2 px-4 rounded-4xl m-1 transition duration-300 bg-stone-950 text-white hover:bg-slate-700"
+        className="w-full text-sm font-bold py-3 px-4 rounded-xl m-1 transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5"
       >
         Reset
       </button>

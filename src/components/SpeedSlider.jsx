@@ -20,7 +20,7 @@ import Slider from '@mui/material/Slider'
 // }
 
 // Define the gradient
-const sliderGradient = 'linear-gradient(to right, #38bdf8, #818cf8)' // sky-400 to indigo-300
+const sliderGradient = 'linear-gradient(to right, #22d3ee, #3b82f6)' // cyan-400 to blue-500
 
 export default function SpeedSlider({
   value,
@@ -33,12 +33,13 @@ export default function SpeedSlider({
     <Box
       sx={{
         // 1. "Glassmorphism" container
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'rgba(15, 23, 42, 0.6)', // slate-900/60
         backdropFilter: 'blur(10px)',
         borderRadius: '16px', // rounded-2xl
         padding: '24px',
-        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        border: '1px solid rgba(255, 255, 255, 0.18)',
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
+        width: '100%',
       }}
     >
       <Slider
@@ -60,11 +61,11 @@ export default function SpeedSlider({
           '& .MuiSlider-thumb': {
             height: 24,
             width: 24,
-            backgroundColor: '#fff',
-            border: '2px solid currentColor',
+            backgroundColor: '#0f172a', // slate-900
+            border: '2px solid #22d3ee', // cyan-400
             // 4. The "glow" effect on hover/focus
             '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-              boxShadow: '0 0 0 8px rgba(56, 189, 248, 0.25)', // sky-400 with 25% opacity
+              boxShadow: '0 0 0 8px rgba(34, 211, 238, 0.15)', // cyan-400 with 15% opacity
             },
             '&:before': {
               display: 'none', // Removes default Mui ripple
@@ -72,19 +73,25 @@ export default function SpeedSlider({
           },
           '& .MuiSlider-valueLabel': {
             // 5. Styled tooltip
-            background: '#1e293b', // slate-800
+            background: '#0f172a', // slate-900
+            border: '1px solid #334155', // slate-700
             borderRadius: '8px',
             padding: '4px 8px',
+            color: '#22d3ee', // cyan-400
           },
           '& .MuiSlider-rail': {
-            opacity: 0.5,
-            backgroundColor: '#374151', // gray-700
+            opacity: 0.3,
+            backgroundColor: '#94a3b8', // slate-400
           },
+          '& .MuiSlider-mark': {
+            backgroundColor: '#94a3b8',
+            opacity: 0.5,
+          }
         }}
       />
       {/* 6. Styled text below */}
-      <p className="text-center text-blue-500 font-medium mt-2">
-        Speed: {value.toFixed(1)}x
+      <p className="text-center text-cyan-400 font-mono text-sm mt-2 font-bold tracking-wide">
+        SPEED: {value.toFixed(1)}x
       </p>
     </Box>
   )

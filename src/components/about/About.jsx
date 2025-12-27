@@ -26,7 +26,7 @@ export default function AboutAlgoScope() {
       title: 'Real-time Visualization',
       description:
         'Watch algorithms come alive with smooth, step-by-step animations',
-      gradient: 'bg-gradient-to-br from-yellow-400 to-orange-500',
+      gradient: 'bg-gradient-to-br from-yellow-500 to-orange-600',
     },
     {
       icon: (
@@ -46,7 +46,7 @@ export default function AboutAlgoScope() {
       ),
       title: 'Adjustable Speed',
       description: 'Control animation speed to learn at your own pace',
-      gradient: 'bg-gradient-to-br from-green-400 to-emerald-500',
+      gradient: 'bg-gradient-to-br from-emerald-500 to-teal-600',
     },
     {
       icon: (
@@ -66,7 +66,7 @@ export default function AboutAlgoScope() {
       ),
       title: 'Multiple Algorithms',
       description: 'Explore sorting, searching, and graph algorithms',
-      gradient: 'bg-gradient-to-br from-blue-400 to-cyan-500',
+      gradient: 'bg-gradient-to-br from-blue-500 to-cyan-600',
     },
     {
       icon: (
@@ -86,32 +86,32 @@ export default function AboutAlgoScope() {
       ),
       title: 'Clean Code View',
       description: 'See implementation in multiple programming languages',
-      gradient: 'bg-gradient-to-br from-purple-400 to-pink-500',
+      gradient: 'bg-gradient-to-br from-purple-500 to-pink-600',
     },
   ]
 
   return (
     <motion.div
-      className="flex flex-col gap-4 p-4"
+      className="flex flex-col gap-4 p-6"
       initial={{ opacity: 0, y: 20 }} // Start: invisible and 20px down
       animate={{ opacity: 1, y: 0 }} // End: fully visible at original position
       transition={{ duration: 1, ease: 'easeInOut' }} // Animation settings
     >
       {/* Hero Section */}
-      <div className="max-w-6xl m-auto text-center py-12"></div>
+      <div className="max-w-7xl m-auto text-center py-4"></div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-white/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/40">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="bg-slate-950/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
           {/* About Section */}
-          <div className="mb-12">
+          <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
-              <h2 className="text-3xl font-bold text-slate-950">
+              <h2 className="text-3xl font-bold text-white tracking-tight">
                 About AlgoScope
               </h2>
             </div>
-            <div className="text-lg space-y-4 text-gray-900 text-shadow-white-900 leading-relaxed">
+            <div className="text-lg space-y-4 text-slate-300 leading-relaxed font-light">
               <p>
                 AlgoScope is an interactive web application built to help
                 learners visualize algorithms in an intuitive and engaging way.
@@ -131,10 +131,10 @@ export default function AboutAlgoScope() {
           </div>
 
           {/* Features Grid */}
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-8">
               <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-500 rounded-full"></div>
-              <h2 className="text-3xl font-bold text-gray-800">✨ Features</h2>
+              <h2 className="text-3xl font-bold text-white tracking-tight">✨ Features</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
@@ -144,14 +144,14 @@ export default function AboutAlgoScope() {
           </div>
 
           {/* Vision Section */}
-          <div className="mb-12 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200/50">
+          <div className="mb-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 border border-white/5 shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-2 h-8 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full"></div>
-              <h2 className="text-3xl font-bold text-gray-800">
+              <h2 className="text-3xl font-bold text-white tracking-tight">
                 👩‍💻 Our Vision
               </h2>
             </div>
-            <p className="text-gray-900 leading-relaxed text-lg">
+            <p className="text-slate-300 leading-relaxed text-lg font-light">
               Learning algorithms shouldn't be about memorizing code — it should
               be about understanding how they work. AlgoScope bridges that gap
               by turning logic into motion, empowering learners to see the flow
@@ -163,7 +163,7 @@ export default function AboutAlgoScope() {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <div className="w-2 h-8 bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full"></div>
-              <h2 className="text-3xl font-bold text-gray-800">
+              <h2 className="text-3xl font-bold text-white tracking-tight">
                 🚀 Meet The Team
               </h2>
             </div>

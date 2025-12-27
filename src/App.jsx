@@ -11,24 +11,28 @@ import ArrayVisualizerPage from './components/arraySsearch/VisualizerPage'
 import AboutAlgoScope from './components/about/About'
 
 function App() {
-  let luxurySunset = 'bg-gradient-to-br from-orange-500 to-purple-500'
-  let calmDawn = 'bg-gradient-to-br from-rose-300 to-slate-400'
-  let roseIndigo = 'bg-gradient-to-br from-indigo-800 to-rose-500'
-  let forestGold = 'bg-gradient-to-br from-green-900 to-yellow-500'
-  let arcticRuby = 'bg-gradient-to-br from-sky-400 to-rose-700'
-  let modern = 'bg-gradient-to-br from-[#0a1929] to-[#1a2332]'
+  const darkTheme = 'bg-[#020617] text-slate-200'
+  
+  // Shared Background Component
+  const Background = () => (
+    <div className="absolute inset-0 z-0 pointer-events-none fixed">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
+    </div>
+  )
+
   const route = createBrowserRouter([
     {
       path: '/',
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex-1 flex flex-col gap-4 p-4">
+             {/* Home has its own background, so we might not need the shared one here if it conflicts, but let's keep it consistent or let Home override */}
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <Home />
               <Footer />
@@ -42,15 +46,13 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700 overflow-hidden`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative overflow-hidden`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            {/* <CanvasSearching algorithm={algorithm} vertex={vertex} /> */}
-            <div className="flex-1 flex flex-col gap-4 p-4">
-              {/* <MenuSetAlgoSearch setAlgorithm={setAlgorithm} /> */}
-              {/* <MenuSelectNodeSearch setNode={setNode} /> */}
+            <Background />
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <VisualizerPage />
               <Footer />
@@ -64,12 +66,13 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex-1 flex flex-col gap-4 p-4">
+            <Background />
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <ShortestPathPage />
               <Footer />
@@ -83,12 +86,13 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex-1 flex flex-col gap-4 p-4">
+             <Background />
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <AboutAlgoScope />
               <Footer />
@@ -102,11 +106,12 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            <div className="flex-1 flex flex-col gap-4 p-4">
+             <Background />
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <SortingVisualizerPage />
               <Footer />
@@ -120,11 +125,12 @@ function App() {
       element: (
         <>
           <motion.div
-            className={`min-h-screen flex flex-col ${modern} transition-colors duration-700`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className={`min-h-screen flex flex-col ${darkTheme} relative`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            <div className="flex-1 flex flex-col gap-4 p-4">
+             <Background />
+            <div className="flex-1 flex flex-col gap-4 p-4 z-10">
               <Navbar />
               <ArrayVisualizerPage />
               <Footer />

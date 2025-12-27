@@ -28,9 +28,9 @@ const StatusDisplay = ({ message }) => {
         className={`
           flex items-center gap-4 
           w-full max-w-lg m-auto p-4 mt-8 
-          rounded-xl border-l-4 border-amber-500 
-          bg-gradient-to-r from-amber-100 to-amber-200 
-          shadow-xl
+          rounded-xl border-l-4 border-l-cyan-500 border-y border-r border-slate-700/50
+          bg-slate-900/80 backdrop-blur-md
+          shadow-lg shadow-cyan-900/20
           
           {/* --- Animation classes --- */}
           transition-all duration-500 ease-out
@@ -41,7 +41,7 @@ const StatusDisplay = ({ message }) => {
         <div className="flex-shrink-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-amber-700"
+            className="h-6 w-6 text-cyan-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -56,7 +56,7 @@ const StatusDisplay = ({ message }) => {
         </div>
 
         {/* 2. Message */}
-        <div className="font-medium text-amber-900">{message}</div>
+        <div className="font-medium text-slate-200">{message}</div>
       </div>
     </>
   )
