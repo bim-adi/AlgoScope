@@ -45,7 +45,7 @@ export const MenuSetAlgoShortestPath = ({ setAlgorithm }) => {
       </form>
       <button
         onClick={handleReset}
-        className="w-full text-sm font-bold py-3 px-4 rounded-xl m-1 transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5"
+        className="w-full text-sm font-bold py-3 px-4 rounded-xl mt-2 transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5"
       >
         Reset
       </button>

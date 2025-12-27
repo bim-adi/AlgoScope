@@ -11,7 +11,9 @@ export const MenuSelectNodeSearch = ({ setNode }) => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider pl-1">Starting Node</h3>
+      <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider pl-1">
+        Starting Node
+      </h3>
       <form className="m-auto">
         <div className="w-full ma-w-sm min-w-[200px]">
           <div className="relative">
@@ -45,7 +47,7 @@ export const MenuSelectNodeSearch = ({ setNode }) => {
       </form>
       <button
         onClick={handleReset}
-        className="w-full text-sm font-bold py-3 px-4 rounded-xl m-1 transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5"
+        className="w-full text-sm font-bold py-3 px-4 rounded-xl mt-2 transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5"
       >
         Reset
       </button>
